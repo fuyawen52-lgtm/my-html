@@ -2717,22 +2717,300 @@
             header {
                 flex-direction: column;
                 gap: 15px;
+                padding: 10px 15px;
             }
 
             .search-box {
                 width: 100%;
                 max-width: 100%;
                 margin: 0;
+                position: static;
+                transform: none;
+            }
+
+            .search-box input {
+                padding: 10px 15px;
+                font-size: 14px;
             }
 
             .bookshelf {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 20px;
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 15px;
+                padding: 10px;
             }
 
             .stats-bar {
                 flex-wrap: wrap;
-                gap: 30px;
+                gap: 20px;
+                padding: 15px 10px;
+            }
+
+            .stat-item .number {
+                font-size: 24px;
+            }
+
+            .stat-item .label {
+                font-size: 12px;
+            }
+
+            .newspaper-cover {
+                height: 180px;
+            }
+
+            .newspaper-cover-title {
+                font-size: 18px;
+            }
+
+            .newspaper-cover-subtitle {
+                font-size: 10px;
+            }
+
+            .newspaper-info {
+                padding: 10px;
+            }
+
+            .newspaper-issue {
+                font-size: 12px;
+            }
+
+            .newspaper-date {
+                font-size: 11px;
+            }
+
+            .top-nav-link {
+                padding: 10px 8px;
+                font-size: 13px;
+            }
+
+            #dailyPage .container {
+                padding: 20px 10px;
+            }
+
+            .organization-layout {
+                flex-direction: column;
+                gap: 15px;
+                padding: 10px;
+            }
+
+            .architecture-menu {
+                width: 100%;
+                min-height: auto;
+                height: auto;
+            }
+
+            .content-container {
+                width: 100%;
+                min-height: 400px;
+                height: 500px;
+            }
+
+            .info-box {
+                display: none;
+            }
+
+            .section-title {
+                margin-bottom: 10px;
+            }
+
+            .section-title svg {
+                width: 220px;
+                height: 35px;
+            }
+
+            .subtitle {
+                font-size: 12px;
+            }
+
+            .modal-content {
+                width: 100%;
+                height: 100vh;
+                border-radius: 0;
+                margin: 0;
+            }
+
+            .modal-body {
+                padding: 15px 10px;
+            }
+
+            .two-columns {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .section-box {
+                padding: 12px;
+            }
+
+            .section-title-bar {
+                padding: 8px 10px;
+            }
+
+            .section-title-bar .icon {
+                font-size: 14px;
+            }
+
+            .section-title-bar .tag {
+                font-size: 10px;
+                padding: 2px 6px;
+            }
+
+            .party-content {
+                padding: 10px;
+            }
+
+            .party-page-title {
+                font-size: 14px;
+            }
+
+            .party-page-desc {
+                font-size: 11px;
+            }
+
+            .party-image {
+                height: 150px;
+            }
+
+            .ai-qa-item {
+                padding: 8px 10px;
+            }
+
+            .ai-qa-question {
+                font-size: 12px;
+            }
+
+            .ai-qa-answer {
+                font-size: 11px;
+            }
+
+            .ai-video-container {
+                height: 150px;
+            }
+
+            .ai-video-desc {
+                font-size: 11px;
+                padding: 8px;
+            }
+
+            .ai-news-item {
+                padding: 8px 10px;
+            }
+
+            .ai-news-title {
+                font-size: 12px;
+            }
+
+            .ai-news-desc {
+                font-size: 11px;
+            }
+
+            .practice-quiz-container {
+                padding: 10px;
+            }
+
+            .quiz-option {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .close-btn {
+                top: 10px;
+                right: 10px;
+                width: 32px;
+                height: 32px;
+                font-size: 18px;
+            }
+
+            .share-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+
+            .modal-header {
+                padding: 12px 15px;
+            }
+
+            .modal-header h2 {
+                font-size: 16px;
+            }
+
+            .modal-header p {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bookshelf {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .newspaper-cover {
+                height: 150px;
+            }
+
+            .newspaper-cover-title {
+                font-size: 16px;
+            }
+
+            .top-nav-link {
+                padding: 8px 6px;
+                font-size: 12px;
+            }
+
+            .stats-bar {
+                gap: 15px;
+            }
+
+            .stat-item .number {
+                font-size: 20px;
+            }
+
+            .section-title svg {
+                width: 180px;
+                height: 30px;
+            }
+
+            .subtitle {
+                font-size: 11px;
+            }
+
+            .modal-body {
+                padding: 10px 8px;
+            }
+
+            .section-box {
+                padding: 10px;
+            }
+
+            .party-image {
+                height: 120px;
+            }
+
+            .ai-video-container {
+                height: 120px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .bookshelf {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 20px;
+            }
+
+            .newspaper-cover {
+                height: 220px;
+            }
+
+            .modal-content {
+                width: 90%;
+                max-width: 700px;
             }
         }
     </style>

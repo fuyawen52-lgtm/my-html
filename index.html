@@ -856,8 +856,9 @@
         /* 文档档案库样式 */
         .document-archive {
             display: flex;
-            gap: 40px;
+            gap: 10px;
             margin-top: 40px;
+            height: 80vh;
             min-height: 600px;
         }
 
@@ -866,8 +867,137 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            width: 300px;
+            width: 350px;
             flex-shrink: 0;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        /* 参会人排行榜 */
+        .attendees-ranking {
+            width: 300px;
+            min-width: 250px;
+            background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+            border: 2px solid rgba(200, 16, 46, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.1);
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .attendees-ranking-content {
+            padding: 20px;
+            height: 100%;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .attendees-ranking-content h3 {
+            color: #000;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(200, 16, 46, 0.2);
+        }
+
+        .attendees-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .attendee-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .attendee-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .attendee-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .attendee-position {
+            font-size: 12px;
+            color: #666;
+            background: #f0f0f0;
+            padding: 3px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .attendee-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+            margin-top: 8px;
+            padding: 10px;
+            background: #fafafa;
+            border-radius: 6px;
+            border-left: 3px solid rgba(200, 16, 46, 0.3);
+        }
+
+        .attendee-item {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .attendee-ratio {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ratio-bar {
+            flex: 1;
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .ratio-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #c8102e 0%, #ff6b35 100%);
+            border-radius: 5px;
+            width: 0%;
+            animation: progressAnimation 1.5s ease-out forwards;
+        }
+
+        @keyframes progressAnimation {
+            from {
+                width: 0%;
+            }
+            to {
+                width: var(--progress-width, 0%);
+            }
+        }
+
+        .ratio-text {
+            font-size: 14px;
+            color: #666;
+            min-width: 50px;
+            text-align: right;
         }
 
         /* 文档位样式 */
@@ -887,7 +1017,7 @@
         .document-folder {
             position: relative;
             width: 100%;
-            height: 130px;
+            height: 150px;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 8px 12px 0 0;
             box-shadow: 
@@ -1028,6 +1158,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(200, 16, 46, 0.1);
             overflow: hidden;
+            height: 100%;
         }
 
         /* 文档详情内容 */
@@ -1087,6 +1218,56 @@
             animation: fadeIn 0.5s ease;
         }
 
+        .document-main-title {
+            color: #000;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid rgba(200, 16, 46, 0.3);
+            text-align: center;
+        }
+
+        /* 会议详情容器 */
+        .meeting-details-container {
+            display: flex;
+            gap: 10px;
+            height: 100%;
+        }
+
+        .meeting-main-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .meeting-attendees-list {
+            width: 300px;
+            min-width: 250px;
+        }
+
+        .meeting-attendees-list h4 {
+            color: #000;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(200, 16, 46, 0.2);
+        }
+
+        .attendees-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .attendee-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+
+
         .document-content h4 {
             color: #c8102e;
             font-size: 16px;
@@ -1094,6 +1275,733 @@
             margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 2px solid rgba(200, 16, 46, 0.2);
+        }
+
+        /* 会议章节样式 */
+        .meeting-section {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(200, 16, 46, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            padding: 15px 20px;
+            margin: 0;
+            border-bottom: 1px solid rgba(200, 16, 46, 0.2);
+        }
+
+        .section-content {
+            padding: 20px;
+        }
+
+        .meeting-info-item {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #000;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-content {
+            color: #333;
+            margin-left: 0;
+        }
+
+        /* 时间线样式 */
+        .timeline-section {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(200, 16, 46, 0.2);
+        }
+
+        .timeline-content {
+            position: relative;
+            padding-left: 30px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .timeline-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .timeline-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .timeline-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, rgba(200, 16, 46, 0.6) 0%, rgba(255, 107, 53, 0.6) 100%);
+            border-radius: 3px;
+        }
+
+        .timeline-content::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, rgba(200, 16, 46, 0.8) 0%, rgba(255, 107, 53, 0.8) 100%);
+        }
+
+        .timeline-content {
+            position: relative;
+            padding-left: 30px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            min-height: 1000px;
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(200, 16, 46, 0.8) 0%, rgba(255, 107, 53, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 15px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
+            border: 2px solid #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .timeline-time {
+            font-size: 14px;
+            font-weight: 600;
+            color: #c8102e;
+            background: rgba(200, 16, 46, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .timeline-title-main {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .timeline-description {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+            margin-top: 5px;
+        }
+
+        .timeline-result {
+            font-size: 13px;
+            color: #fff;
+            background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 8px;
+            display: inline-block;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(200, 16, 46, 0.2);
+        }
+
+        /* 行动项追踪表模块 */
+        .discussion-topics-section {
+            margin-top: 40px;
+            padding: 25px 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .discussion-topics-title {
+            font-size: 24px;
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(200, 16, 46, 0.2);
+            text-align: center;
+        }
+
+        .topics-table {
+            width: calc(100% + 50px);
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: -25px;
+            border: 2px solid rgba(200, 16, 46, 0.2);
+        }
+
+        .topics-table th {
+            background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
+            color: #fff;
+            padding: 8px 4px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+            border: 1px solid rgba(200, 16, 46, 0.2);
+        }
+
+        .topics-table td {
+            padding: 8px 4px;
+            border: 1px solid rgba(200, 16, 46, 0.2);
+            font-size: 11px;
+            color: #000;
+            line-height: 1.4;
+            text-align: center;
+            word-break: break-all;
+        }
+
+        .topics-table tr:hover {
+            background: rgba(200, 16, 46, 0.05);
+        }
+
+        /* 负责人标签样式 */
+        .tag-person {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            margin: 1px;
+        }
+        .tag-renxingyue { background: #e74c3c; }
+        .tag-zhongdong { background: #3498db; }
+        .tag-lixuehuan { background: #2ecc71; }
+        .tag-qiuwenfeng { background: #9b59b6; }
+        .tag-danli { background: #f39c12; }
+        .tag-chenzong { background: #1abc9c; }
+        .tag-maidong { background: #e91e63; }
+
+        /* 成果类型标签样式 */
+        .tag-deliverable {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            margin: 1px;
+        }
+        .tag-type1 { background: #e74c3c; }
+        .tag-type2 { background: #00bcd4; }
+        .tag-type3 { background: #9c27b0; }
+        .tag-type4 { background: #ffc107; }
+        .tag-type5 { background: #e91e63; }
+        .tag-type6 { background: #4caf50; }
+        .tag-type7 { background: #2196f3; }
+        .tag-type8 { background: #ff9800; }
+
+        /* 角色观点地图模块 */
+        .role-opinions-section {
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border: 2px solid rgba(200, 16, 46, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.05);
+        }
+
+        .role-opinions-title {
+            font-size: 24px;
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(200, 16, 46, 0.2);
+            text-align: center;
+        }
+
+        .role-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: flex-start;
+        }
+
+        .role-card {
+            width: calc(50% - 7.5px);
+            max-width: 400px;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border: 2px solid rgba(200, 16, 46, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(200, 16, 46, 0.25);
+        }
+
+        .role-card-header {
+            background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .role-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .role-position {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        .role-card-body {
+            padding: 12px 16px;
+        }
+
+        .role-section {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(200, 16, 46, 0.1);
+        }
+
+        .role-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .role-section-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #c8102e;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .role-standpoints {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .standpoint-item {
+            background: rgba(200, 16, 46, 0.05);
+            padding: 8px;
+            border-radius: 6px;
+            border-left: 2px solid #c8102e;
+        }
+
+        .standpoint-text {
+            font-size: 12px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 6px;
+            font-style: italic;
+        }
+
+        .emotion-intensity {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 6px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        .emotion-intensity.strong {
+            background: rgba(200, 16, 46, 0.15);
+            color: #c8102e;
+        }
+
+        .emotion-intensity.medium {
+            background: rgba(255, 107, 53, 0.15);
+            color: #ff6b35;
+        }
+
+        .role-attitude {
+            font-size: 14px;
+            font-weight: bold;
+            color: #28a745;
+            padding: 6px 12px;
+            background: rgba(40, 167, 69, 0.1);
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .role-arguments {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .argument-item {
+            font-size: 12px;
+            color: #333;
+            line-height: 1.5;
+            padding: 6px 8px;
+            background: rgba(200, 16, 46, 0.03);
+            border-radius: 4px;
+            border-left: 2px solid rgba(200, 16, 46, 0.3);
+        }
+
+        /* 微妙洞察样式 */
+        .insights-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border: 2px solid rgba(200, 16, 46, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.05);
+        }
+
+        .insights-title {
+            font-size: 24px;
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(200, 16, 46, 0.2);
+            text-align: center;
+        }
+
+        .insights-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .insight-item {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border: 1px solid rgba(200, 16, 46, 0.15);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(200, 16, 46, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .insight-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.15);
+        }
+
+        .insight-number {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(200, 16, 46, 0.3);
+            align-self: center;
+        }
+
+        .insight-highlight {
+            background: linear-gradient(180deg, transparent 60%, rgba(255, 193, 7, 0.4) 60%);
+            padding: 0 2px;
+            font-weight: 600;
+        }
+
+        /* 遗留问题清单样式 */
+        .issues-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border: 2px solid rgba(200, 16, 46, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.05);
+        }
+
+        .issues-title {
+            font-size: 24px;
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(200, 16, 46, 0.2);
+            text-align: center;
+        }
+
+        .issues-subtitle {
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .issues-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .issue-item {
+            display: flex;
+            gap: 12px;
+            padding: 15px 18px;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border: 1px solid rgba(200, 16, 46, 0.15);
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(200, 16, 46, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            align-items: flex-start;
+        }
+
+        .issue-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.12);
+        }
+
+        .issue-core {
+            border-left: 4px solid #2196f3;
+        }
+
+        .issue-risk {
+            border-left: 4px solid #f44336;
+        }
+
+        .issue-action {
+            border-left: 4px solid #4caf50;
+        }
+
+        .issue-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(200, 16, 46, 0.1);
+        }
+
+        .issue-core .issue-icon {
+            background: rgba(33, 150, 243, 0.15);
+            color: #2196f3;
+        }
+
+        .issue-risk .issue-icon {
+            background: rgba(244, 67, 54, 0.15);
+            color: #f44336;
+        }
+
+        .issue-action .issue-icon {
+            background: rgba(76, 175, 80, 0.15);
+            color: #4caf50;
+        }
+
+        .issue-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .issue-text {
+            font-size: 14px;
+            color: #333;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .issue-note {
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+            padding: 4px 10px;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 4px;
+            border-left: 2px solid #ccc;
+        }
+
+        .issue-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .issue-responsible {
+            font-size: 12px;
+            color: #666;
+            padding: 3px 10px;
+            background: rgba(200, 16, 46, 0.06);
+            border-radius: 4px;
+        }
+
+        .issue-urgency {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        .urgency-high {
+            color: #c8102e;
+            background: rgba(200, 16, 46, 0.1);
+        }
+
+        .urgency-medium {
+            color: #ff9800;
+            background: rgba(255, 152, 0, 0.1);
+        }
+
+        /* 核心关键词样式 */
+        .keywords-section {
+            margin-top: 20px;
+            padding: 15px 0;
+            border-top: 1px solid rgba(200, 16, 46, 0.15);
+        }
+
+        .keywords-title {
+            font-size: 14px;
+            color: #666;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .keywords-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .keyword-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            background: transparent;
+            border: 1px solid;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .keyword-tag:hover {
+            opacity: 0.8;
+        }
+
+        .keywords-container .tag-type1 {
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        .keywords-container .tag-type2 {
+            color: #00bcd4;
+            border-color: #00bcd4;
+        }
+
+        .keywords-container .tag-type3 {
+            color: #9c27b0;
+            border-color: #9c27b0;
+        }
+
+        .keywords-container .tag-type4 {
+            color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .keywords-container .tag-type5 {
+            color: #e91e63;
+            border-color: #e91e63;
+        }
+
+        .keywords-container .tag-type6 {
+            color: #4caf50;
+            border-color: #4caf50;
+        }
+
+        .keywords-container .tag-type7 {
+            color: #2196f3;
+            border-color: #2196f3;
+        }
+
+        .keywords-container .tag-type8 {
+            color: #ff9800;
+            border-color: #ff9800;
+        }
+
+        .insight-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .insight-label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #c8102e;
+            padding: 4px 12px;
+            background: rgba(200, 16, 46, 0.08);
+            border-radius: 4px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .insight-text {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+            text-align: justify;
         }
 
         .document-content p {
@@ -1419,11 +2327,7 @@
             border-radius: 3px;
         }
 
-        .newspaper-header .info-bar .slogan {
-            font-size: 11px;
-            letter-spacing: 2px;
-            color: #666;
-        }
+
 
         /* 调整info-bar布局，添加右侧操作区域 */
         .info-bar {
@@ -1439,26 +2343,6 @@
             gap: 15px;
         }
 
-        .share-btn {
-            background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
-            color: white;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            white-space: nowrap;
-        }
-
-        .share-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
-        }
-
         /* 确保转发按钮在移动设备上也不会遮挡内容 */
         @media (max-width: 767px) {
             .info-bar {
@@ -1471,11 +2355,6 @@
                 width: 100%;
                 justify-content: space-between;
                 margin-top: 5px;
-            }
-            
-            .share-btn {
-                padding: 5px 12px;
-                font-size: 12px;
             }
         }
 
@@ -1512,33 +2391,12 @@
 
         .section-block {
             background: #fff;
-            border: 1px solid #e8e8e8;
+            border: 4px solid;
+            border-image: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%) 1;
             margin-bottom: 15px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             overflow: hidden;
             position: relative;
-        }
-
-        .section-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #c8102e 0%, #ff6b35 50%, #c8102e 100%);
-            z-index: 1;
-        }
-
-        .section-block::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #c8102e 0%, #ff6b35 50%, #c8102e 100%);
-            z-index: 1;
         }
 
         .section-block:last-child {
@@ -1548,7 +2406,7 @@
         .section-block.party-section {
             height: 350px;
         }
-
+        
         .section-block.party-section .section-content {
             height: 305px;
             overflow: hidden;
@@ -1564,25 +2422,19 @@
         }
 
         .section-title-bar {
-            background: linear-gradient(90deg, 
-                rgba(200, 16, 46, 0.15) 0%, 
-                rgba(255, 255, 255, 0.7) 30%, 
-                rgba(255, 255, 255, 0.7) 70%, 
-                rgba(200, 16, 46, 0.15) 100%);
+            background: linear-gradient(90deg, #c8102e 0%, #ff6b35 100%);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            color: #c8102e;
+            color: #fff;
             padding: 0 15px;
             height: 45px;
             display: flex;
             align-items: center;
             gap: 8px;
-            border-top: 1px solid rgba(200, 16, 46, 0.25);
-            border-bottom: 1px solid rgba(200, 16, 46, 0.25);
             position: relative;
             box-shadow: 
-                0 2px 8px rgba(200, 16, 46, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+                0 2px 8px rgba(200, 16, 46, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .section-title-bar::before {
@@ -1591,9 +2443,9 @@
             left: 12px;
             top: 50%;
             transform: translateY(-50%);
-            color: #c8102e;
+            color: #fff;
             font-size: 14px;
-            text-shadow: 0 0 8px rgba(200, 16, 46, 0.4);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
         }
 
         .section-title-bar::after {
@@ -1602,17 +2454,12 @@
             right: 12px;
             top: 50%;
             transform: translateY(-50%);
-            color: #c8102e;
+            color: #fff;
             font-size: 14px;
-            text-shadow: 0 0 8px rgba(200, 16, 46, 0.4);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
         }
 
-        .section-title-bar .icon {
-            font-size: 16px;
-            margin-left: 25px;
-            color: #c8102e;
-            text-shadow: 0 0 10px rgba(200, 16, 46, 0.3);
-        }
+
 
         .section-title-bar .title {
             font-size: 16px;
@@ -1623,12 +2470,13 @@
             font-family: 'PingFang SC', 'Microsoft YaHei UI', 'Source Han Sans SC', 'Noto Sans SC', sans-serif;
         }
 
-        /* SVG艺术字红橙渐变效果 */
+        /* SVG艺术字效果 */
         .svg-title {
             font-size: 16px;
             font-weight: bold;
             letter-spacing: 4px;
-            fill: url(#redOrangeGradientV);
+            fill: #fff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .svg-title-main {
@@ -1639,15 +2487,16 @@
         }
 
         .section-title-bar .tag {
-            background: #c8102e;
-            color: #fff;
+            background: rgba(255, 255, 255, 0.9);
+            color: #c8102e;
             padding: 3px 10px;
             font-size: 10px;
             border-radius: 12px;
             letter-spacing: 1px;
             white-space: nowrap;
-            box-shadow: 0 2px 4px rgba(200, 16, 46, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-right: 25px;
+            font-weight: bold;
         }
 
         .section-content {
@@ -2013,12 +2862,14 @@
         .media-placeholder {
             transition: all 0.3s ease;
             cursor: pointer;
+            border: 3px solid #c8102e;
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .media-placeholder:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(200, 16, 46, 0.2);
-            border: 2px solid #c8102e;
+            box-shadow: 0 8px 20px rgba(200, 16, 46, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15);
+            border: 3px solid #ff6b35;
         }
 
         .media-placeholder .icon {
@@ -2601,11 +3452,12 @@
 
         .media-placeholder {
             background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-            border: 1px dashed #c8102e;
+            border: 3px solid #c8102e;
             border-radius: 4px;
             padding: 20px 5px;
             text-align: center;
             font-size: 10px;
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
             color: #888;
             min-height: 80px;
             display: flex;
@@ -2755,6 +3607,164 @@
                 margin-left: -12.5%;
             }
         }
+
+        /* 会议对话弹窗样式 */
+        .meeting-chat-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .meeting-chat-modal.active {
+            display: flex;
+        }
+
+        .meeting-chat-content {
+            width: 700px;
+            max-width: 90%;
+            max-height: 80vh;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meeting-chat-header {
+            background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
+            color: #fff;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .meeting-chat-header h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .meeting-chat-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .meeting-chat-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .meeting-chat-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+            background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
+        }
+
+        .chat-message {
+            display: flex;
+            margin-bottom: 20px;
+            animation: messageSlideIn 0.3s ease;
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-message.user {
+            flex-direction: row-reverse;
+        }
+
+        .chat-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-message.system .chat-avatar {
+            background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
+            color: #fff;
+        }
+
+        .chat-message.user .chat-avatar {
+            background: linear-gradient(135deg, #4a90e2 0%, #63a4ff 100%);
+            color: #fff;
+        }
+
+        .chat-message-content {
+            max-width: 70%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.6;
+            position: relative;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .chat-message.system .chat-message-content {
+            background: #fff;
+            color: #333;
+            border-bottom-left-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .chat-message.user .chat-message-content {
+            background: linear-gradient(135deg, #4a90e2 0%, #63a4ff 100%);
+            color: #fff;
+            border-bottom-right-radius: 4px;
+            margin-right: 12px;
+        }
+
+        .chat-message-time {
+            font-size: 11px;
+            color: #999;
+            margin-top: 6px;
+            text-align: center;
+        }
+
+        .chat-message.system .chat-message-time {
+            text-align: left;
+            margin-left: 57px;
+        }
+
+        .chat-message.user .chat-message-time {
+            text-align: right;
+            margin-right: 57px;
+        }
     </style>
 </head>
 <body>
@@ -2769,7 +3779,7 @@
                     <a href="javascript:void(0)" class="top-nav-link" onclick="switchPage('organization')">组织</a>
                 </li>
                 <li class="top-nav-item" data-page="meeting">
-                    <a href="javascript:void(0)" class="top-nav-link" onclick="if(confirm('待开发')) { switchPage('daily'); } else { return false; }">会议</a>
+                    <a href="javascript:void(0)" class="top-nav-link" onclick="switchPage('meeting')">会议</a>
                 </li>
                 <li class="top-nav-item" data-page="project">
                     <a href="javascript:void(0)" class="top-nav-link" onclick="if(confirm('待开发')) { switchPage('daily'); } else { return false; }">项目</a>
@@ -3550,7 +4560,7 @@
                         <div class="decoration-line right"></div>
                     </div>
                     <svg width="400" height="60" viewBox="0 0 400 60" style="margin:0 auto;">
-                        <text x="200" y="45" text-anchor="middle" class="svg-title-meeting" style="font-family:'SimHei','Microsoft YaHei','STHeiti',sans-serif;font-size:36px;font-weight:bold;letter-spacing:12px;fill:#000;">会议档案库</text>
+                        <text x="200" y="45" text-anchor="middle" class="svg-title-meeting" style="font-family:'SimHei','Microsoft YaHei','STHeiti',sans-serif;font-size:36px;font-weight:bold;letter-spacing:12px;fill:#000;">团队会议纪要</text>
                     </svg>
                     <p class="subtitle">记录每一次重要会议</p>
                 </div>
@@ -3567,98 +4577,8 @@
                                     <div class="document-preview">
                                         <div class="document-icon">📄</div>
                                         <div class="document-info">
-                                            <div class="document-title">董事会会议纪要</div>
-                                            <div class="document-date">2026-01-15</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="document-slot" data-document="2" onclick="openMeetingDocument(2)">
-                            <div class="document-folder">
-                                <div class="folder-tab"></div>
-                                <div class="folder-side"></div>
-                                <div class="folder-content">
-                                    <div class="document-preview">
-                                        <div class="document-icon">📊</div>
-                                        <div class="document-info">
-                                            <div class="document-title">季度业务回顾</div>
-                                            <div class="document-date">2026-01-20</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="document-slot" data-document="3" onclick="openMeetingDocument(3)">
-                            <div class="document-folder">
-                                <div class="folder-tab"></div>
-                                <div class="folder-side"></div>
-                                <div class="folder-content">
-                                    <div class="document-preview">
-                                        <div class="document-icon">🎯</div>
-                                        <div class="document-info">
-                                            <div class="document-title">年度战略规划</div>
-                                            <div class="document-date">2026-01-10</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="document-slot" data-document="4" onclick="openMeetingDocument(4)">
-                            <div class="document-folder">
-                                <div class="folder-tab"></div>
-                                <div class="folder-side"></div>
-                                <div class="folder-content">
-                                    <div class="document-preview">
-                                        <div class="document-icon">🚀</div>
-                                        <div class="document-info">
-                                            <div class="document-title">产品 roadmap 讨论</div>
-                                            <div class="document-date">2026-01-25</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="document-slot" data-document="5" onclick="openMeetingDocument(5)">
-                            <div class="document-folder">
-                                <div class="folder-tab"></div>
-                                <div class="folder-side"></div>
-                                <div class="folder-content">
-                                    <div class="document-preview">
-                                        <div class="document-icon">💰</div>
-                                        <div class="document-info">
-                                            <div class="document-title">财务预算评审</div>
-                                            <div class="document-date">2026-01-05</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="document-slot" data-document="6" onclick="openMeetingDocument(6)">
-                            <div class="document-folder">
-                                <div class="folder-tab"></div>
-                                <div class="folder-side"></div>
-                                <div class="folder-content">
-                                    <div class="document-preview">
-                                        <div class="document-icon">👥</div>
-                                        <div class="document-info">
-                                            <div class="document-title">人才发展规划</div>
-                                            <div class="document-date">2026-01-18</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="document-slot" data-document="7" onclick="openMeetingDocument(7)">
-                            <div class="document-folder">
-                                <div class="folder-tab"></div>
-                                <div class="folder-side"></div>
-                                <div class="folder-content">
-                                    <div class="document-preview">
-                                        <div class="document-icon">💻</div>
-                                        <div class="document-info">
-                                            <div class="document-title">技术架构评审</div>
-                                            <div class="document-date">2026-01-22</div>
+                                            <div class="document-title">筹备小组例会1</div>
+                                            <div class="document-date">2025-12-08</div>
                                         </div>
                                     </div>
                                 </div>
@@ -3681,6 +4601,16 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- 参会人排行榜 -->
+                    <div class="attendees-ranking" id="attendeesRanking" style="display: none;">
+                        <div class="attendees-ranking-content">
+                            <h3>参会人员</h3>
+                            <div class="attendees-list" id="attendeesList">
+                                <!-- 动态生成参会人列表 -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3698,16 +4628,37 @@
             <button class="close-btn" id="closeBtn">×</button>
             <div class="newspaper-header">
                 <div class="logo-area">
-                    <img src="images/9161e9ab-5cac-4f69-b57f-2ca6970b1429.png" alt="智启侨乡日报" style="height:38px; width:auto;">
+                    <svg width="180" height="40" viewBox="0 0 180 40">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#c8102e;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="logoShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-color="rgba(200,16,46,0.3)" />
+                            </filter>
+                        </defs>
+                        <text x="90" y="32" text-anchor="middle" style="font-family:'SimHei','Microsoft YaHei','STHeiti',sans-serif;font-size:24px;font-weight:bold;letter-spacing:4px;fill:url(#logoGradient);filter:url(#logoShadow);">智启侨乡日报</text>
+                    </svg>
                     <img src="images/985fb8e021cb545bbb56779357129d7.png?v=1.0" alt="Logo" style="height:38px;">
                 </div>
                 <div class="divider"></div>
                 <div class="info-bar">
                     <span class="issue" id="modalIssue">第 0 期</span>
-                    <span class="slogan">智创侨乡 · 砥砺前行</span>
+                    <svg width="200" height="25" viewBox="0 0 200 25">
+                        <defs>
+                            <linearGradient id="sloganGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#c8102e;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="sloganShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-color="rgba(200,16,46,0.3)" />
+                            </filter>
+                        </defs>
+                        <text x="100" y="20" text-anchor="middle" class="svg-slogan" style="font-family:'SimHei','Microsoft YaHei','STHeiti',sans-serif;font-size:16px;font-weight:bold;letter-spacing:3px;fill:url(#sloganGradient);filter:url(#sloganShadow);">智创侨乡 · 砥砺前行</text>
+                    </svg>
                     <div class="info-bar-actions">
                         <span class="date" id="modalDate">2026年1月1日</span>
-                        <button class="share-btn" onclick="shareNewspaper()">📤 转发</button>
                     </div>
                 </div>
             </div>
@@ -3766,8 +4717,21 @@
         </div>
     </div>
 
+    <!-- 会议对话弹窗 -->
+    <div class="meeting-chat-modal" id="meetingChatModal">
+        <div class="meeting-chat-content">
+            <div class="meeting-chat-header">
+                <h3>筹备小组例会1 - 会议记录</h3>
+                <button class="meeting-chat-close" onclick="closeMeetingChat()">×</button>
+            </div>
+            <div class="meeting-chat-body" id="meetingChatBody">
+                <!-- 动态插入会议对话内容 -->
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>© 2026 集团日报 | 版权所有</p>
+        <p>© 2026 智能侨乡 | 版权所有</p>
     </footer>
 
     <script>
@@ -3907,7 +4871,7 @@
             modalBody.innerHTML = '';
             
             let partyHtml = '<div class="section-block party-section">';
-            partyHtml += '<div class="section-title-bar"><span class="icon">📖</span><svg width="320" height="35" viewBox="0 0 320 35" style="flex:1;"><text x="160" y="26" text-anchor="middle" class="svg-title" style="font-family:\'PingFang SC\',\'Microsoft YaHei\',sans-serif;font-size:17px;letter-spacing:2px;">"十五五"时期经济社会发展的六个"坚持"</text></svg><span class="tag">学习专栏</span></div>';
+            partyHtml += '<div class="section-title-bar"><svg width="320" height="35" viewBox="0 0 320 35" style="flex:1;"><text x="160" y="26" text-anchor="middle" class="svg-title" style="font-family:\'PingFang SC\',\'Microsoft YaHei\',sans-serif;font-size:17px;letter-spacing:2px;">"十五五"时期经济社会发展的六个"坚持"</text></svg><span class="tag">学习专栏</span></div>';
             partyHtml += '<div class="section-content">';
             partyHtml += '<div class="party-pages">';
             np.partyCulture.forEach((item, idx) => {
@@ -3995,7 +4959,7 @@
             qaHtml += '</div></div>';
             
             let videoHtml = '<div class="section-block">';
-            videoHtml += '<div class="section-title-bar"><span class="icon">🎬</span><svg width="100" height="30" viewBox="0 0 100 30" style="flex:1;"><text x="50" y="22" text-anchor="middle" class="svg-title" style="font-family:\'PingFang SC\',\'Microsoft YaHei\',sans-serif;">AI工具科普</text></svg><span class="tag">视频教程</span></div>';
+            videoHtml += '<div class="section-title-bar"><svg width="100" height="30" viewBox="0 0 100 30" style="flex:1;"><text x="50" y="22" text-anchor="middle" class="svg-title" style="font-family:\'PingFang SC\',\'Microsoft YaHei\',sans-serif;">AI工具科普</text></svg><span class="tag">视频教程</span></div>';
             videoHtml += '<div class="section-content">';
             videoHtml += `
                 <div class="video-container" onclick="openVideoExpandModal('${np.aiVideo.videoSrc}', '${np.aiVideo.desc}')" style="position:relative;">
@@ -4009,7 +4973,7 @@
             videoHtml += '</div></div>';
             
             let aiNewsHtml = '<div class="section-block ai-news-section">';
-            aiNewsHtml += '<div class="section-title-bar"><span class="icon">📰</span><svg width="70" height="30" viewBox="0 0 70 30" style="flex:1;"><text x="35" y="22" text-anchor="middle" class="svg-title" style="font-family:\'PingFang SC\',\'Microsoft YaHei\',sans-serif;">AI新闻</text></svg><span class="tag">前沿资讯</span></div>';
+            aiNewsHtml += '<div class="section-title-bar"><svg width="70" height="30" viewBox="0 0 70 30" style="flex:1;"><text x="35" y="22" text-anchor="middle" class="svg-title" style="font-family:\'PingFang SC\',\'Microsoft YaHei\',sans-serif;">AI新闻</text></svg><span class="tag">前沿资讯</span></div>';
             aiNewsHtml += '<div class="section-content ai-news-container" style="padding:0;position:relative;overflow:hidden;">';
             aiNewsHtml += '<div class="ai-news-pages">';
             np.aiNews.forEach((item, idx) => {
@@ -4032,7 +4996,7 @@
             aiNewsHtml += '</div></div>';
             
             let practiceHtml = '<div class="section-block practice-quiz-section" style="position:relative;">';
-            practiceHtml += '<div class="section-title-bar"><span class="icon">✍️</span><svg width="70" height="30" viewBox="0 0 70 30" style="flex:1;"><text x="35" y="22" text-anchor="middle" class="svg-title" style="font-family:\'PingFang SC\',\'Microsoft YaHei\',sans-serif;">实践题</text></svg><span class="tag">知识测验</span></div>';
+            practiceHtml += '<div class="section-title-bar"><svg width="70" height="30" viewBox="0 0 70 30" style="flex:1;"><text x="35" y="22" text-anchor="middle" class="svg-title" style="font-family:\'PingFang SC\',\'Microsoft YaHei\',sans-serif;">实践题</text></svg><span class="tag">知识测验</span></div>';
             practiceHtml += '<div class="section-content practice-quiz-container" id="practiceQuizContainer" style="padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;">';
             // 默认显示：答题进度 + 开始答题按钮
             practiceHtml += '<div id="practicePreview" style="text-align:center;width:100%;">';
@@ -5793,16 +6757,73 @@
 
         initBookshelf();
 
+        // 会议对话数据
+        const meetingChatData = {
+            1: [
+                { type: 'system', name: '会议主持人', avatar: '👨‍💼', time: '14:00', content: '各位同事下午好，今天我们召开筹备小组例会1，主要讨论下周工作安排和项目进度。' },
+                { type: 'user', name: '产品经理', avatar: '👩‍💻', time: '14:05', content: '好的，我先汇报一下产品部门的工作进展。本周我们完成了用户需求调研，正在整理需求文档。' },
+                { type: 'system', name: '会议主持人', avatar: '👨‍💼', time: '14:08', content: '很好，需求文档预计什么时候能完成？' },
+                { type: 'user', name: '产品经理', avatar: '👩‍💻', time: '14:10', content: '预计明天下午可以完成初稿，后天提交评审。' },
+                { type: 'system', name: '会议主持人', avatar: '👨‍💼', time: '14:12', content: '技术部门呢？有什么进展需要汇报吗？' },
+                { type: 'user', name: '技术主管', avatar: '👨‍🔧', time: '14:15', content: '我们正在优化系统性能，已经解决了几个关键bug，预计下周可以进行压力测试。' },
+                { type: 'system', name: '会议主持人', avatar: '👨‍💼', time: '14:18', content: '很好，各部门要保持高效沟通，确保各项工作按时完成。还有什么问题需要协调吗？' },
+                { type: 'user', name: '运营经理', avatar: '👩‍💼', time: '14:20', content: '市场推广方案已经准备好，需要技术部门配合上线时间。' },
+                { type: 'system', name: '会议主持人', avatar: '👨‍💼', time: '14:22', content: '好的，技术部门会后与运营部门对接上线时间。今天的会议就到这里，散会。' }
+            ]
+        };
+
+        // 显示会议对话
+        function showMeetingChat(documentId) {
+            const chatData = meetingChatData[documentId];
+            if (!chatData) return;
+            
+            const chatBody = document.getElementById('meetingChatBody');
+            if (!chatBody) return;
+            
+            chatBody.innerHTML = '';
+            
+            chatData.forEach((message, index) => {
+                setTimeout(() => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `chat-message ${message.type}`;
+                    
+                    messageDiv.innerHTML = `
+                        <div class="chat-avatar">${message.avatar}</div>
+                        <div class="chat-message-wrapper">
+                            <div class="chat-message-content">${message.content}</div>
+                            <div class="chat-message-time">${message.name} · ${message.time}</div>
+                        </div>
+                    `;
+                    
+                    chatBody.appendChild(messageDiv);
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }, index * 300);
+            });
+            
+            const modal = document.getElementById('meetingChatModal');
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        // 关闭会议对话
+        function closeMeetingChat() {
+            const modal = document.getElementById('meetingChatModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
         // 会议文档数据
         const meetingDocuments = {
             1: {
-                title: '董事会会议纪要',
-                date: '2026-01-15',
+                title: '筹备小组例会1',
+                date: '2025-12-08',
                 time: '14:00-16:30',
                 location: '公司会议室A',
-                attendees: '董事会成员、CEO、CFO',
-                content: '本次董事会会议主要讨论了公司2026年度战略规划、财务预算、高管任免等重要事项。会议一致通过了公司新的战略发展方向，批准了2026年度财务预算，并对部分高管职位进行了调整。会议强调，公司将继续加强核心业务的发展，同时积极探索新的业务增长点，确保公司可持续发展。',
-                attachments: '会议议程、财务报告、战略规划文档'
+                attendees: '各部门负责人、团队主管',
+                content: '本次小周例会筹备会议主要讨论了下周工作安排、项目进度追踪、团队协作等事项。会议明确了各部门的工作重点，协调了跨部门合作事宜，并对近期工作中出现的问题进行了分析和解决。会议强调，各部门要保持高效沟通，确保各项工作按时完成。',
+                attachments: '周工作计划、项目进度表、会议纪要'
             },
             2: {
                 title: '季度业务回顾',
@@ -5880,34 +6901,769 @@
             // 更新文档详情
             const documentDetailsBody = document.getElementById('documentDetailsBody');
             if (documentDetailsBody) {
-                documentDetailsBody.innerHTML = `
-                    <div class="document-content">
-                        <h4>${documentData.title}</h4>
-                        <p>${documentData.content}</p>
-                        <div class="meta-info">
-                            <div class="meta-item">
-                                <span class="icon">📅</span>
-                                <span>日期：${documentData.date}</span>
+                const mainTitle = documentId === 1 ? '20251208筹备小组例会纪要' : documentData.title;
+                
+                if (documentId === 1) {
+                    documentDetailsBody.innerHTML = `
+                        <div class="document-content">
+                            <h3 class="document-main-title">${mainTitle}</h3>
+                            
+                            <div class="meeting-section">
+                                <h3 class="section-title">一、会议基础信息</h3>
+                                <div class="section-content">
+                                    <div class="meeting-info-item">
+                                        <span class="info-label">1、会议主题：</span>
+                                        <div class="info-content">超值无忧项目筹备小组周度工作汇报与任务部署（含上周任务复盘、本周计划安排、核心问题协调等）</div>
+                                    </div>
+                                    <div class="meeting-info-item">
+                                        <span class="info-label">2、会议时间：</span>
+                                        <div class="info-content">12 月 8 日（周一）9:00-11:45（根据录音时间流及 "每周一 9 点到 9 点 50 分" 的例会规则估算，实际因讨论深入略有延长）</div>
+                                    </div>
+                                    <div class="meeting-info-item">
+                                        <span class="info-label">3、会议地点：</span>
+                                        <div class="info-content">侨乡行总经理办公室（线下主会场）；明确 "5 人以内在该办公室，超过 6 人则转至大办公室或党群服务中心小会议室" 的后续会议地点规则</div>
+                                    </div>
+                                    <div class="meeting-info-item">
+                                        <span class="info-label">4、主持人：</span>
+                                        <div class="info-content">李雪环</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="meta-item">
-                                <span class="icon">⏰</span>
-                                <span>时间：${documentData.time}</span>
+                            
+                            <div class="timeline-section">
+                                <h3 class="timeline-title">二、核心结论发展脉络</h3>
+                                <div class="timeline-content">
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">00:00:00-00:00:28</div>
+                                            <div class="timeline-title-main">调整会议汇报方式</div>
+                                        </div>
+                                        <div class="timeline-description">陈总调整会议汇报方式，无需全部资料发任星月，后续可用手机 / 电脑连屏汇报。<span class="timeline-result">简化会议资料传输流程，提高汇报效率，会议正式启动。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">00:00:29-00:05:15</div>
+                                            <div class="timeline-title-main">整体任务进度汇报</div>
+                                        </div>
+                                        <div class="timeline-description">李雪环汇报 45 项任务整体进度（22 项完成、21 项进行中、2 项待确认）；陈总要求整理企业微信启用前的历史工作日志。<span class="timeline-result">明确任务分布，任星月需在 12 月 11 日前完成历史日志汇总并提交麦总。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">00:05:16-00:08:30</div>
+                                            <div class="timeline-title-main">工作群沟通响应规范</div>
+                                        </div>
+                                        <div class="timeline-description">工作群沟通响应规范已下发且成员均有回复；陈总要求后续例会随机抽检成员对文件的掌握度。<span class="timeline-result">确定文件 "已读抽检" 机制，确保成员熟悉各类规范文件。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">00:08:31-00:18:31</div>
+                                            <div class="timeline-title-main">名片设计与域名注册</div>
+                                        </div>
+                                        <div class="timeline-description">1. 名片设计：对外用纸质、内部用电子；2. "超值无忧" 拼音域名已注册，需 12 月 9 日前出缩短方案；3. 新宽带安装完成进入测试；4. 周例会框架确定（每周一 9-9:50，分 4 环节）。<span class="timeline-result">1. 明确名片使用场景；2. 李雪环负责域名缩短方案；3. 宽带测试需验证稳定性；4. 固化周例会流程与参会、汇报要求。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">00:18:32-00:32:35</div>
+                                            <div class="timeline-title-main">基础管理制度汇报</div>
+                                        </div>
+                                        <div class="timeline-description">1. 基础管理制度（保密、仪容仪表、考勤等）汇报，文件加密存于企业微信微盘；2. 陈总要求修正仪容仪表规范，补充办公环境整洁要求。<span class="timeline-result">1. 任星月负责微盘文件分类规范；2. 完善办公着装、环境管理要求，小组人员已签署保密协议。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">00:32:36-00:43:00</div>
+                                            <div class="timeline-title-main">招聘与行政接待标准</div>
+                                        </div>
+                                        <div class="timeline-description">1. 招聘需 3 天集中面试（每天 3-4 人），12 月 11 日前汇总候选人；2. 礼仪培训框架需尽快与陈总确认；3. 行政接待分普通 / 贵宾两类，补充桌面物品摆放标准。<span class="timeline-result">1. 加快招聘节奏，集中筛选后统一决策；2. 李雪环需对接陈总确定礼仪培训框架；3. 明确接待分类及办公桌面摆放规范。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">00:43:01-00:56:30</div>
+                                            <div class="timeline-title-main">办公家具与物料采购</div>
+                                        </div>
+                                        <div class="timeline-description">1. 任星月完成办公家具 / 物料商家筛选，需杰总确认采购；2. 笔记本无需看样，按白色 + 橙色印刷面、参数直接定制。<span class="timeline-result">1. 杰总确认采购清单后推进物料采购；2. 任星月对接厂商，按既定参数定制笔记本。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">00:56:31-01:08:28</div>
+                                            <div class="timeline-title-main">资质办理与资产盘点</div>
+                                        </div>
+                                        <div class="timeline-description">1. 钟董启动资质办理（职业中介许可证、人力资源服务前置审批），12 月 13 日汇报进度，12 月底前完成；2. 资产盘点本周六前完成，下周一例会提交。<span class="timeline-result">1. 明确资质办理时间节点与责任人；2. 李雪环负责资产盘点，任星月后续设计资产标签。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">00:08:29-01:14:50</div>
+                                            <div class="timeline-title-main">网络测试与资产标签</div>
+                                        </div>
+                                        <div class="timeline-description">1. 网络测试需用专业软件检测各角落信号，明确测试责任人；2. 资产标签分 40 分、20 万左右两类规格。<span class="timeline-result">1. 明确网络测试责任人及标准；2. 确定资产标签分类规格。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">01:14:51-01:22:10</div>
+                                            <div class="timeline-title-main">新媒体账号开通</div>
+                                        </div>
+                                        <div class="timeline-description">1. 丘文凤开通抖音 / 小红书 / 视频号，公众号暂定名 "超值无忧"；2. 陈总指出设计团队超时严重、可用图极少。<span class="timeline-result">1. 待公众号名称最终确认后开通；2. 要求设计团队提高响应速度，明确任务时间节点。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">01:22:11-01:27:00</div>
+                                            <div class="timeline-title-main">联盟企业微信与公众号运营</div>
+                                        </div>
+                                        <div class="timeline-description">1. 联盟需单独开通俊享物联企业微信，复制工作模板；2. 公众号需每周发布 2 条推文，文案经钟总审批。<span class="timeline-result">1. 任星月负责企业微信开通与模板复制；2. 丘文凤制定公众号运营计划，落实审批流程。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">01:27:01-01:45:00</div>
+                                            <div class="timeline-title-main">VI 统一规范确定</div>
+                                        </div>
+                                        <div class="timeline-description">1. 展示系统 UI 第三版、PPT 模板，确定 VI 统一规范；2. 企业简介需补充建筑外观、办公环境等高质量素材（20 张以内）。<span class="timeline-result">1. 麦董确版后启用统一 PPT 模板；2. 丘文凤 2 天内分类收集素材，附文案说明。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">01:45:01-01:57:47</div>
+                                            <div class="timeline-title-main">政府对接 PPT 优化</div>
+                                        </div>
+                                        <div class="timeline-description">1. 政府对接 PPT（第二版）补充平安联盟、6 栋 64 联动等内容；2. 核心需求为立项与背书，教授到访后开展头脑风暴。<span class="timeline-result">1. 推进 PPT 美工与录屏演讲制作；2. 明确与政府对接的核心目标，后续提炼教授到访输出成果。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">01:57:48-02:13:00</div>
+                                            <div class="timeline-title-main">紧急任务截止时间确定</div>
+                                        </div>
+                                        <div class="timeline-description">确定多项紧急任务截止时间：1. 12 月 11 日前完成微盘储存标准化、邮箱域名缩短；2. 12 月 10 日前完成接待标准细化、资质办理进度追踪；3. 12 月 11 日前完成资产标签设计。<span class="timeline-result">明确各任务责任人与时间节点，任星月、李雪环分别跟进对应任务。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">02:13:01-02:24:30</div>
+                                            <div class="timeline-title-main">文件夹采购与软件版本问题</div>
+                                        </div>
+                                        <div class="timeline-description">1. 文件夹采购确定为 A4 规格（黑色 + 蓝色），共 60 个；2. 设计文件乱码因软件版本问题，李雪环提供安装包。<span class="timeline-result">1. 李雪环对接线下批发采购；2. 解决设计文件兼容问题，保障广告公司印刷需求。</span></div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-header">
+                                            <div class="timeline-time">02:24:31-02:45:15</div>
+                                            <div class="timeline-title-main">公众号优化与文案审批</div>
+                                        </div>
+                                        <div class="timeline-description">1. 公众号优化：补充结尾二维码、统一签名，微信号可一年修改一次；2. 文案需经钟总审批，避免长时间断更。<span class="timeline-result">1. 丘文凤按 VI 规范优化公众号版面；2. 建立公众号推文定期发布与审批机制。</span></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="meta-item">
-                                <span class="icon">📍</span>
-                                <span>地点：${documentData.location}</span>
+                            
+                            <!-- 行动项追踪表模块 -->
+                            <div class="discussion-topics-section">
+                                <h3 class="discussion-topics-title">三、行动项追踪表</h3>
+                                <div class="discussion-topics-content">
+                                    <table class="topics-table">
+                                        <thead>
+                                            <tr>
+                                                <th>任务内容</th>
+                                                <th>负责人</th>
+                                                <th>交付物</th>
+                                                <th>截止日期</th>
+                                                <th>依赖项</th>
+                                                <th>具体可执行动作</th>
+                                                <th>需提交的成果</th>
+                                                <th>所需支持</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>历史工作日志整理汇总（企业微信启用前）</td>
+                                                <td><span class="tag-person tag-renxingyue">任星月</span></td>
+                                                <td>工作日志汇总文档</td>
+                                                <td>12 月 11 日</td>
+                                                <td>小组成员配合补填</td>
+                                                <td>收集各成员筹备期至企业微信启用前的日志，分类整理后提交陈总</td>
+                                                <td><span class="tag-deliverable tag-type1">日志汇总表</span></td>
+                                                <td>小组成员配合补填</td>
+                                            </tr>
+                                            <tr>
+                                                <td>资质办理（职业中介许可证 + 人力资源服务前置审批 + 经营范围变更）</td>
+                                                <td><span class="tag-person tag-zhongdong">钟董</span></td>
+                                                <td>相关许可证+变更后的营业执照</td>
+                                                <td>12 月 31 日</td>
+                                                <td>外部部门审批</td>
+                                                <td>12 月 13 日前对接相关部门，明确办理流程与所需材料，每周同步进度</td>
+                                                <td><span class="tag-deliverable tag-type2">资质办理进度周报</span> <span class="tag-deliverable tag-type3">最终证照</span></td>
+                                                <td>李雪环配合提供资料</td>
+                                            </tr>
+                                            <tr>
+                                                <td>招聘集中面试与候选人筛选</td>
+                                                <td><span class="tag-person tag-lixuehuan">李雪环</span></td>
+                                                <td>候选人名单与录用建议</td>
+                                                <td>12 月 11 日</td>
+                                                <td>简历筛选+面试安排</td>
+                                                <td>每天约 3-4 场面试，3 天集中完成，汇总候选人情况后提交高层决策</td>
+                                                <td><span class="tag-deliverable tag-type4">候选人评估表</span> <span class="tag-deliverable tag-type5">录用建议</span></td>
+                                                <td>高层参与最终决策</td>
+                                            </tr>
+                                            <tr>
+                                                <td>行政接待标准细化（含桌面摆放、分类流程）</td>
+                                                <td><span class="tag-person tag-lixuehuan">李雪环</span></td>
+                                                <td>细化后的接待标准文档</td>
+                                                <td>12 月 10 日</td>
+                                                <td>陈总审核框架</td>
+                                                <td>按普通 / 贵宾分类完善流程，补充桌面物品摆放标准，提交陈总确认</td>
+                                                <td><span class="tag-deliverable tag-type6">接待标准文档</span></td>
+                                                <td>陈总提供审核意见</td>
+                                            </tr>
+                                            <tr>
+                                                <td>微盘文件储存标准化制定</td>
+                                                <td><span class="tag-person tag-renxingyue">任星月</span></td>
+                                                <td>微盘分类标准文档</td>
+                                                <td>12 月 11 日</td>
+                                                <td>小组文件归档需求</td>
+                                                <td>按 "进行中 / 已确版 / 淘汰版" 分类，明确权限与归档规则，同步给小组</td>
+                                                <td><span class="tag-deliverable tag-type7">微盘分类标准文档</span></td>
+                                                <td>小组成员配合执行</td>
+                                            </tr>
+                                            <tr>
+                                                <td>邮箱域名缩短方案制定</td>
+                                                <td><span class="tag-person tag-lixuehuan">李雪环</span></td>
+                                                <td>域名缩短备选方案</td>
+                                                <td>12 月 11 日</td>
+                                                <td>域名注册商技术支持</td>
+                                                <td>筛选合规缩短工具，测试稳定性，整理 3-5 个备选方案提交审核</td>
+                                                <td><span class="tag-deliverable tag-type8">域名缩短方案文档</span></td>
+                                                <td>注册商技术支持</td>
+                                            </tr>
+                                            <tr>
+                                                <td>资产盘点与标签设计</td>
+                                                <td><span class="tag-person tag-lixuehuan">李雪环</span>（盘点）+<span class="tag-person tag-renxingyue">任星月</span>（标签）</td>
+                                                <td>资产盘点表+资产标签设计稿</td>
+                                                <td>盘点：本周六+标签：12 月 10 日</td>
+                                                <td>盘点数据收集+陈总确认标签规格</td>
+                                                <td>李雪环完成资产盘点并提交；任星月按 40 分 / 20 万左右规格设计标签</td>
+                                                <td><span class="tag-deliverable tag-type1">资产盘点表</span> <span class="tag-deliverable tag-type2">标签设计稿</span></td>
+                                                <td>各部门配合提供资产信息</td>
+                                            </tr>
+                                            <tr>
+                                                <td>企业简介高质量素材收集（照片 + 文案）</td>
+                                                <td><span class="tag-person tag-qiuwenfeng">丘文凤</span></td>
+                                                <td>分类素材包（20 张以内）</td>
+                                                <td>12 月 10 日</td>
+                                                <td>阿斌配合筛选+AI 优化</td>
+                                                <td>按党建、活动、证书分类收集素材，附文案说明，筛选后提交</td>
+                                                <td><span class="tag-deliverable tag-type3">分类素材包（含文案）</span></td>
+                                                <td>阿斌提供技术支持</td>
+                                            </tr>
+                                            <tr>
+                                                <td>公众号运营规范制定</td>
+                                                <td><span class="tag-person tag-qiuwenfeng">丘文凤</span></td>
+                                                <td>运营规范文档+推文计划表</td>
+                                                <td>12 月 13 日</td>
+                                                <td>钟董审核文案</td>
+                                                <td>制定每周 2 条推文计划，明确审批流程与 VI 规范，补充结尾二维码</td>
+                                                <td><span class="tag-deliverable tag-type4">运营规范文档</span> <span class="tag-deliverable tag-type5">推文计划表</span></td>
+                                                <td>钟董提供审核意见</td>
+                                            </tr>
+                                            <tr>
+                                                <td>专业前台招聘</td>
+                                                <td><span class="tag-person tag-lixuehuan">李雪环</span></td>
+                                                <td>前台候选人简历汇总</td>
+                                                <td>12 月 15 日</td>
+                                                <td>招聘渠道对接</td>
+                                                <td>发布招聘信息，筛选符合形象与专业要求的候选人，同步面试安排</td>
+                                                <td><span class="tag-deliverable tag-type6">候选人简历汇总</span></td>
+                                                <td>高层参与面试决策</td>
+                                            </tr>
+                                            <tr>
+                                                <td>设计文件乱码问题解决</td>
+                                                <td><span class="tag-person tag-qiuwenfeng">丘文凤</span>+<span class="tag-person tag-lixuehuan">李雪环</span></td>
+                                                <td>兼容版设计文件+软件安装包</td>
+                                                <td>12 月 9 日</td>
+                                                <td>设计团队配合</td>
+                                                <td>李雪环提供设计软件版本安装包，丘文凤测试兼容性并重新发送文件</td>
+                                                <td><span class="tag-deliverable tag-type7">兼容版设计文件</span></td>
+                                                <td>设计团队配合测试</td>
+                                            </tr>
+                                            <tr>
+                                                <td>联盟企业微信开通与模板复制</td>
+                                                <td><span class="tag-person tag-renxingyue">任星月</span>+<span class="tag-person tag-danli">丹丽</span></td>
+                                                <td>俊享物联企业微信账号+复制后的工作模板</td>
+                                                <td>12 月 11 日</td>
+                                                <td>企业微信注册审核</td>
+                                                <td>任星月注册俊享物联企业微信，丹丽将现有工作模板复制至联盟板块</td>
+                                                <td><span class="tag-deliverable tag-type8">企业微信账号</span> <span class="tag-deliverable tag-type1">同步后的模板</span></td>
+                                                <td>企业微信平台支持</td>
+                                            </tr>
+                                            <tr>
+                                                <td>笔记本定制采购</td>
+                                                <td><span class="tag-person tag-renxingyue">任星月</span></td>
+                                                <td>定制完成的笔记本（白色 + 橙色面）</td>
+                                                <td>12 月 20 日</td>
+                                                <td>厂商参数确认</td>
+                                                <td>按陈总确认的参数对接厂商，对比 2 家以上报价，确认后下单</td>
+                                                <td><span class="tag-deliverable tag-procurement">采购订单</span> <span class="tag-deliverable tag-document">到货验收单</span></td>
+                                                <td>陈总确认参数</td>
+                                            </tr>
+                                            <tr>
+                                                <td>文件夹采购（A4 规格，黑色 + 蓝色）</td>
+                                                <td><span class="tag-person tag-lixuehuan">李雪环</span></td>
+                                                <td>60 个合规文件夹</td>
+                                                <td>12 月 15 日</td>
+                                                <td>线下批发商对接</td>
+                                                <td>对接线下批发商询价，确认颜色与材质，完成采购并入库</td>
+                                                <td><span class="tag-deliverable tag-type4">采购订单</span> <span class="tag-deliverable tag-type5">入库单</span></td>
+                                                <td>批发商货源保障</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="meta-item">
-                                <span class="icon">👥</span>
-                                <span>参会人员：${documentData.attendees}</span>
+                            
+                            <!-- 角色观点地图模块 -->
+                            <div class="role-opinions-section">
+                                <h3 class="role-opinions-title">四、角色观点地图</h3>
+                                <div class="role-cards-container">
+                                    <div class="role-card">
+                                        <div class="role-card-header">
+                                            <div class="role-name">陈总</div>
+                                            <div class="role-position">高层管理</div>
+                                        </div>
+                                        <div class="role-card-body">
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键立场</div>
+                                                <div class="role-standpoints">
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"所有工作需结果导向，避免无意义拖延，设计超时严重，影响整体流程"</div>
+                                                        <div class="emotion-intensity strong">情绪强度：强</div>
+                                                    </div>
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"文件已读要抽检，一个文件抽一两个人问，确保大家熟悉规范"</div>
+                                                        <div class="emotion-intensity medium">情绪强度：中</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">态度</div>
+                                                <div class="role-attitude">支持</div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键论点</div>
+                                                <div class="role-arguments">
+                                                    <div class="argument-item">1. 资质办理、招聘是核心优先级，12 月底前必须完成资质</div>
+                                                    <div class="argument-item">2. 设计团队严重超时，可用图极少，需提高响应速度</div>
+                                                    <div class="argument-item">3. 文件已读需抽检，确保成员掌握</div>
+                                                    <div class="argument-item">4. 任务延迟必须说明原因，避免影响后续工作</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="role-card">
+                                        <div class="role-card-header">
+                                            <div class="role-name">李雪环</div>
+                                            <div class="role-position">项目管理</div>
+                                        </div>
+                                        <div class="role-card-body">
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键立场</div>
+                                                <div class="role-standpoints">
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"任务延迟必须解释具体原因，明确下一个计划完成时间节点"</div>
+                                                        <div class="emotion-intensity medium">情绪强度：中</div>
+                                                    </div>
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"接待分普通和贵宾两类，补充桌面物品摆放标准"</div>
+                                                        <div class="emotion-intensity medium">情绪强度：中</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">态度</div>
+                                                <div class="role-attitude">支持</div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键论点</div>
+                                                <div class="role-arguments">
+                                                    <div class="argument-item">1. 45 项任务 22 项完成，延迟任务需说明原因</div>
+                                                    <div class="argument-item">2. 制定行政接待标准、周例会流程</div>
+                                                    <div class="argument-item">3. 招聘需 3 天集中面试后统一决策</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="role-card">
+                                        <div class="role-card-header">
+                                            <div class="role-name">钟董</div>
+                                            <div class="role-position">高层管理</div>
+                                        </div>
+                                        <div class="role-card-body">
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键立场</div>
+                                                <div class="role-standpoints">
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"网络测试要明确谁来定义、怎么定义，确保工作完整度"</div>
+                                                        <div class="emotion-intensity medium">情绪强度：中</div>
+                                                    </div>
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"素材按类打包，附文案方便后续使用"</div>
+                                                        <div class="emotion-intensity medium">情绪强度：中</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">态度</div>
+                                                <div class="role-attitude">中立</div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键论点</div>
+                                                <div class="role-arguments">
+                                                    <div class="argument-item">1. 网络测试需用专业软件，明确责任人与验证标准</div>
+                                                    <div class="argument-item">2. 素材按活动打包并附文案说明</div>
+                                                    <div class="argument-item">3. 资质办理本周启动，周三汇报进度</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="role-card">
+                                        <div class="role-card-header">
+                                            <div class="role-name">麦董</div>
+                                            <div class="role-position">高层管理</div>
+                                        </div>
+                                        <div class="role-card-body">
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键立场</div>
+                                                <div class="role-standpoints">
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"公众号要统一标签与风格，提升品牌辨识度，不能长时间断更"</div>
+                                                        <div class="emotion-intensity medium">情绪强度：中</div>
+                                                    </div>
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"企业简介素材要高质量，突出核心优势"</div>
+                                                        <div class="emotion-intensity strong">情绪强度：强</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">态度</div>
+                                                <div class="role-attitude">支持</div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键论点</div>
+                                                <div class="role-arguments">
+                                                    <div class="argument-item">1. 公众号需规律更新（每周至少 2 条），优化 VI 与文案规范</div>
+                                                    <div class="argument-item">2. PPT 模板需统一，彰显企业实力</div>
+                                                    <div class="argument-item">3. 文案需经审批后发布</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="role-card">
+                                        <div class="role-card-header">
+                                            <div class="role-name">任星月</div>
+                                            <div class="role-position">项目助理</div>
+                                        </div>
+                                        <div class="role-card-body">
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键立场</div>
+                                                <div class="role-standpoints">
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"按标准整理日志和微盘，每天检查任务跟进表填写情况"</div>
+                                                        <div class="emotion-intensity medium">情绪强度：中</div>
+                                                    </div>
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"办公物料已筛选商家，待杰总确认后推进采购"</div>
+                                                        <div class="emotion-intensity weak">情绪强度：弱</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">态度</div>
+                                                <div class="role-attitude">支持</div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键论点</div>
+                                                <div class="role-arguments">
+                                                    <div class="argument-item">1. 3 天内整理完历史工作日志，12 月 11 日前提交</div>
+                                                    <div class="argument-item">2. 搭建微盘分类框架，细化归档规则</div>
+                                                    <div class="argument-item">3. 跟进办公物料采购对接</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="role-card">
+                                        <div class="role-card-header">
+                                            <div class="role-name">丘文凤</div>
+                                            <div class="role-position">设计 / 品宣</div>
+                                        </div>
+                                        <div class="role-card-body">
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键立场</div>
+                                                <div class="role-standpoints">
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"公众号文案做完后会给三姐看一眼再发，确保合规"</div>
+                                                        <div class="emotion-intensity weak">情绪强度：弱</div>
+                                                    </div>
+                                                    <div class="standpoint-item">
+                                                        <div class="standpoint-text">"高质量照片需要外聘专业人员，保证质感达标"</div>
+                                                        <div class="emotion-intensity medium">情绪强度：中</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">态度</div>
+                                                <div class="role-attitude">中立</div>
+                                            </div>
+                                            <div class="role-section">
+                                                <div class="role-section-title">关键论点</div>
+                                                <div class="role-arguments">
+                                                    <div class="argument-item">1. 已开通抖音 / 视频号，公众号待名称确认后开通</div>
+                                                    <div class="argument-item">2. 设计需明确时间节点，高质量照片需专业单反拍摄</div>
+                                                    <div class="argument-item">3. 设计文件乱码因软件版本问题</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="meta-item">
-                                <span class="icon">📎</span>
-                                <span>附件：${documentData.attachments}</span>
+                            
+                            <!-- 微妙洞察模块 -->
+                            <div class="insights-section">
+                                <h3 class="insights-title">五、微妙洞察</h3>
+                                <div class="insights-content">
+                                    <div class="insight-item">
+                                        <div class="insight-number">①</div>
+                                        <div class="insight-body">
+                                            <div class="insight-label">潜台词</div>
+                                            <div class="insight-text">陈总反复强调 "工作要结果导向""避免无意义拖延"，并严厉指出设计团队 "严重超时、可用图极少"，实则潜台词是<span class="insight-highlight">设计团队的交付效率与质量已拖累筹备期核心进度，但因丘文凤怀孕，不便直接严厉追责，只能通过明确时间节点和抽检机制施压</span>。</div>
+                                        </div>
+                                    </div>
+                                    <div class="insight-item">
+                                        <div class="insight-number">②</div>
+                                        <div class="insight-body">
+                                            <div class="insight-label">立场变化</div>
+                                            <div class="insight-text">丘文凤初期面对设计超时质疑时，以 "按颖姐要求设计" 为由辩解，态度被动；后续主动提出 "最好给明确时间节点"，<span class="insight-highlight">立场从 "被动回应问题" 转变为 "主动索要执行标准"</span>，体现出对整改的配合意愿。</div>
+                                        </div>
+                                    </div>
+                                    <div class="insight-item">
+                                        <div class="insight-number">③</div>
+                                        <div class="insight-body">
+                                            <div class="insight-label">权力动态</div>
+                                            <div class="insight-text">核心决策（如资质办理截止日期、公众号名称、招聘标准）均由陈总、麦董、钟董等高层最终敲定，<span class="insight-highlight">筹备小组仅负责执行</span>；且会议提及 "财务报税归属需会后找老板确立"，说明<span class="insight-highlight">存在未参会的更高层决策者，其意见将决定部分关键事项的最终走向</span>。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 遗留问题清单模块 -->
+                            <div class="issues-section">
+                                <h3 class="issues-title">六、遗留问题清单</h3>
+                                <div class="issues-subtitle">（注：本次为执行会，侧重行动项落地，符号标注：△核心结论，❗风险，✓行动项）</div>
+                                <div class="issues-list">
+                                    <div class="issue-item issue-core">
+                                        <div class="issue-icon">△</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">公众号名称最终确认（暂定 "超职无忧"）</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：陈总 / 麦董</span>
+                                                <span class="issue-urgency urgency-high">紧急程度：高</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="issue-item issue-risk">
+                                        <div class="issue-icon">❗</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">设计文件乱码问题（AI/CD 软件版本不兼容）</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：丘文凤（对接设计团队）、李雪环（提供软件安装包）</span>
+                                                <span class="issue-urgency urgency-medium">紧急程度：中</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="issue-item issue-action">
+                                        <div class="issue-icon">✓</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">专业摄影师对接与收费标准确定</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：丘文凤</span>
+                                                <span class="issue-urgency urgency-high">紧急程度：高</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="issue-item issue-risk">
+                                        <div class="issue-icon">❗</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">资质办理外部审批流程时长不确定</div>
+                                            <div class="issue-note">（推测依据：依赖政府部门审批，仅明确 12 月 13 日汇报进度，未确定最终审批周期）</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：钟董</span>
+                                                <span class="issue-urgency urgency-high">紧急程度：高</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="issue-item issue-action">
+                                        <div class="issue-icon">✓</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">公众号文案审批流程明确（需钟总最终确认）</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：钟董、丘文凤</span>
+                                                <span class="issue-urgency urgency-medium">紧急程度：中</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="issue-item issue-action">
+                                        <div class="issue-icon">✓</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">历史资料补拍 / 优化（照片质量差，需分类打包附文案）</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：丘文凤</span>
+                                                <span class="issue-urgency urgency-medium">紧急程度：中</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="issue-item issue-risk">
+                                        <div class="issue-icon">❗</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">设计团队响应超时整改（无明确时间节点管控机制）</div>
+                                            <div class="issue-note">（推测依据：陈总指出多项设计任务延误，未制定后续超时追责规则）</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：丘文凤</span>
+                                                <span class="issue-urgency urgency-medium">紧急程度：中</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="issue-item issue-action">
+                                        <div class="issue-icon">✓</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">联盟企业微信注册与工作模板复制步骤细化</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：任星月、丹丽</span>
+                                                <span class="issue-urgency urgency-high">紧急程度：高</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="issue-item issue-action">
+                                        <div class="issue-icon">✓</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">资产标签设计（按 40 分 / 20 万左右规格）</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：任星月</span>
+                                                <span class="issue-urgency urgency-high">紧急程度：高</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="issue-item issue-action">
+                                        <div class="issue-icon">✓</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">邮箱域名缩短方案制定</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：李雪环</span>
+                                                <span class="issue-urgency urgency-high">紧急程度：高</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="issue-item issue-action">
+                                        <div class="issue-icon">✓</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">行政接待标准细化（补充桌面摆放、贵宾接待流程）</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：李雪环</span>
+                                                <span class="issue-urgency urgency-high">紧急程度：高</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="issue-item issue-core">
+                                        <div class="issue-icon">△</div>
+                                        <div class="issue-content">
+                                            <div class="issue-text">专业前台招聘推进</div>
+                                            <div class="issue-meta">
+                                                <span class="issue-responsible">责任方：李雪环</span>
+                                                <span class="issue-urgency urgency-medium">紧急程度：中</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 核心关键词模块 -->
+                            <div class="keywords-section">
+                                <h3 class="keywords-title">会议核心关键词</h3>
+                                <div class="keywords-container">
+                                    <span class="keyword-tag tag-type1">结果导向</span>
+                                    <span class="keyword-tag tag-type2">资质办理</span>
+                                    <span class="keyword-tag tag-type3">设计整改</span>
+                                    <span class="keyword-tag tag-type4">招聘推进</span>
+                                    <span class="keyword-tag tag-type5">公众号运营</span>
+                                    <span class="keyword-tag tag-type6">资产盘点</span>
+                                    <span class="keyword-tag tag-type7">接待标准</span>
+                                    <span class="keyword-tag tag-type8">域名优化</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                } else {
+                    documentDetailsBody.innerHTML = `
+                        <div class="document-content">
+                            <h3 class="document-main-title">${mainTitle}</h3>
+                        </div>
+                    `;
+                }
+            }
+            
+            // 更新参会人排行榜
+            const attendeesList = document.getElementById('attendeesList');
+            if (attendeesList && documentId === 1) {
+                // 参会人数据
+                const attendees = [
+                    {
+                        name: '陈总',
+                        position: '高层管理',
+                        ratio: 35,
+                        description: '主导多环节讨论，覆盖任务部署、流程规范、设计要求、采购决策、资质办理优先级等核心内容，发言频次和篇幅最高。'
+                    },
+                    {
+                        name: '李雪环',
+                        position: '项目管理',
+                        ratio: 25,
+                        description: '做整体进度汇报（45 项任务分布）、制度框架讲解、周例会流程制定、行政接待标准框架介绍等，覆盖核心工作模块，发言篇幅仅次于陈总。'
+                    },
+                    {
+                        name: '钟董',
+                        position: '高层管理',
+                        ratio: 15,
+                        description: '参与接待标准、资质办理、素材收集逻辑、网络测试规范等关键讨论，发言有实质性决策贡献。'
+                    },
+                    {
+                        name: '麦董',
+                        position: '高层管理',
+                        ratio: 12,
+                        description: '聚焦品牌 VI、公众号运营、高层决策讨论，涉及 PPT 模板确版、公众号文案规范等内容，发言频次较高。'
+                    },
+                    {
+                        name: '任星月',
+                        position: '项目助理',
+                        ratio: 8,
+                        description: '汇报采购与资料管理工作，跟进任务追踪、文件归档分类等，发言围绕具体工作执行展开。'
+                    },
+                    {
+                        name: '丘文凤',
+                        position: '设计 / 品宣',
+                        ratio: 5,
+                        description: '汇报设计工作进展、账号开通情况，回应设计超时问题，发言集中于设计与品宣相关事项。'
+                    }
+                ];
+                
+                attendeesList.innerHTML = attendees.map((person, index) => `
+                                    <div class="attendee-item" style="animation-delay: ${index * 0.2}s;">
+                                        <div class="attendee-info">
+                                            <span class="attendee-name">${person.name}</span>
+                                            <span class="attendee-position">${person.position}</span>
+                                        </div>
+                                        <div class="attendee-description">${person.description}</div>
+                                        <div class="attendee-ratio">
+                                            <div class="ratio-bar">
+                                                <div class="ratio-progress" style="--progress-width: ${person.ratio}%; animation-delay: ${index * 0.3}s;"></div>
+                                            </div>
+                                            <span class="ratio-text">${person.ratio}%</span>
+                                        </div>
+                                    </div>
+                                `).join('');
+            }
+            
+            // 显示参会人排行榜
+            const attendeesRanking = document.getElementById('attendeesRanking');
+            if (attendeesRanking && documentId === 1) {
+                attendeesRanking.style.display = 'block';
             }
         }
 
@@ -5921,6 +7677,12 @@
                         <p>请从左侧选择一个会议文档查看详情</p>
                     </div>
                 `;
+            }
+            
+            // 隐藏参会人排行榜
+            const attendeesRanking = document.getElementById('attendeesRanking');
+            if (attendeesRanking) {
+                attendeesRanking.style.display = 'none';
             }
         }
 
@@ -6130,7 +7892,18 @@
             let html = `
                 <div class="mobile-poster">
                     <div class="poster-header">
-                        <img src="images/9161e9ab-5cac-4f69-b57f-2ca6970b1429.png" alt="智启侨乡日报" style="height:24px; width:auto; margin:0;">
+                        <svg width="120" height="28" viewBox="0 0 120 28">
+                            <defs>
+                                <linearGradient id="posterLogoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#c8102e;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="posterLogoShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feDropShadow dx="1" dy="1" stdDeviation="1" flood-color="rgba(200,16,46,0.3)" />
+                                </filter>
+                            </defs>
+                            <text x="60" y="22" text-anchor="middle" style="font-family:'SimHei','Microsoft YaHei','STHeiti',sans-serif;font-size:16px;font-weight:bold;letter-spacing:2px;fill:url(#posterLogoGradient);filter:url(#posterLogoShadow);">智启侨乡日报</text>
+                        </svg>
                         <div class="poster-issue">第 ${newspaper.issue} 期</div>
                         <div class="poster-date">${newspaper.date}</div>
                     </div>

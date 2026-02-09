@@ -88,6 +88,8 @@
         .architecture-menu {
             position: relative;
             width: 200px;
+            min-height: 700px;
+            height: 80vh;
             margin: 0;
             z-index: 1000;
             flex-shrink: 0;
@@ -357,27 +359,28 @@
             display: flex;
             align-items: flex-start;
             gap: 10px;
-            margin-left: 0;
+            justify-content: center;
+            width: 100%;
+            max-width: none;
+            margin: 0 auto;
+            padding: 0 10px;
+            min-height: 80vh;
         }
 
         /* 内容容器块样式 */
         .content-container {
-            width: 1200px;
-            max-width: calc(100vw - 220px);
-            height: 700px;
+            flex: 1;
+            min-width: 400px;
+            min-height: 700px;
+            height: 80vh;
             background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
             border: 2px solid rgba(200, 16, 46, 0.2);
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(200, 16, 46, 0.1);
-            flex-shrink: 0;
         }
 
         /* 响应式布局 */
         @media (max-width: 1500px) {
-            .content-container {
-                width: calc(100vw - 220px);
-            }
-            
             .info-box {
                 display: none;
             }
@@ -394,7 +397,6 @@
             
             .content-container {
                 width: 100%;
-                max-width: 100%;
                 height: 500px;
             }
             
@@ -578,11 +580,12 @@
 
         /* 信息框样式 */
         .info-box {
-            width: 400px;
-            height: 700px;
+            width: 350px;
+            min-height: 700px;
+            height: 80vh;
             background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
             border: 2px solid rgba(200, 16, 46, 0.2);
-            border-radius: 0;
+            border-radius: 12px;
             box-shadow: 0 4px 15px rgba(200, 16, 46, 0.1);
             flex-shrink: 0;
             display: flex;
@@ -833,6 +836,11 @@
             padding: 40px 20px;
             width: 100%;
             box-sizing: border-box;
+        }
+
+        .organization-container {
+            max-width: 100%;
+            padding: 40px 10px;
         }
 
         .section-title {
@@ -2448,7 +2456,7 @@
 
         <!-- 组织页面内容 -->
         <div id="organizationPage" class="page-content" style="display:none;">
-            <div class="container" style="margin-left: 0;">
+            <div class="container organization-container">
                 <div class="organization-layout">
                     <!-- 架构目录按钮 -->
                     <div class="architecture-menu">

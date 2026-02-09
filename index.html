@@ -148,10 +148,9 @@
 
         .architecture-dropdown {
             position: absolute;
-            top: 100%;
+            top: calc(100% + 10px);
             left: 0;
             width: 100%;
-            margin-top: 10px;
             background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -163,11 +162,16 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 100;
+            z-index: 1000;
+        }
+
+        .architecture-btn {
+            position: relative;
+            z-index: 1001;
         }
 
         .architecture-dropdown.active {
-            max-height: 650px;
+            max-height: 1000px;
             overflow-y: auto;
             opacity: 1;
             visibility: visible;
@@ -370,7 +374,7 @@
         /* 内容容器块样式 */
         .content-container {
             flex: 1;
-            min-width: 400px;
+            min-width: 300px;
             min-height: 700px;
             height: 80vh;
             background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
@@ -580,7 +584,7 @@
 
         /* 信息框样式 */
         .info-box {
-            width: 350px;
+            width: 450px;
             min-height: 700px;
             height: 80vh;
             background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
@@ -843,6 +847,324 @@
             padding: 40px 10px;
         }
 
+        /* 会议页面样式 */
+        .meeting-container {
+            position: relative;
+            min-height: 80vh;
+        }
+
+        /* 文档档案库样式 */
+        .document-archive {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            min-height: 600px;
+        }
+
+        /* 文档位容器 */
+        .document-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        /* 文档位样式 */
+        .document-slot {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* 鼠标悬停效果 - 提起文档 */
+        .document-slot:hover {
+            transform: translateY(-8px) translateX(10px);
+            z-index: 10;
+        }
+
+        /* 文档文件夹样式 */
+        .document-folder {
+            position: relative;
+            width: 100%;
+            height: 130px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px 12px 0 0;
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+        }
+
+        /* 文件夹悬停效果 */
+        .document-folder:hover {
+            transform: translateY(-5px) rotateX(2deg);
+            box-shadow: 
+                0 12px 24px rgba(0, 0, 0, 0.15),
+                0 4px 8px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        /* 文件夹标签 */
+        .folder-tab {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 25px;
+            background: linear-gradient(90deg, #c8102e 0%, #ff6b35 100%);
+            border-radius: 8px 12px 0 0;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            z-index: 2;
+        }
+
+        /* 文件夹侧面 */
+        .folder-side {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            width: 15px;
+            height: 105px;
+            background: linear-gradient(180deg, #e63946 0%, #c1121f 100%);
+            z-index: 1;
+            transform: skewY(-3deg);
+            transform-origin: top left;
+            box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 文件夹内容 */
+        .folder-content {
+            position: absolute;
+            top: 25px;
+            left: 15px;
+            width: calc(100% - 15px);
+            height: 105px;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            padding: 20px 25px;
+            border: 1px solid #dee2e6;
+            border-top: none;
+            border-left: none;
+            z-index: 0;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        /* 文件夹折角效果 */
+        .document-folder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 30px 30px 0;
+            border-color: transparent #e9ecef transparent transparent;
+            z-index: 3;
+        }
+
+        /* 文件夹折角阴影 */
+        .document-folder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 28px 28px 0;
+            border-color: transparent #c8102e transparent transparent;
+            z-index: 2;
+        }
+
+        /* 文档预览 */
+        .document-preview {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            height: 100%;
+            justify-content: flex-start;
+        }
+
+        /* 文档图标 */
+        .document-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        /* 文档信息 */
+        .document-info {
+            flex: 1;
+        }
+
+        /* 文档标题 */
+        .document-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 文档日期 */
+        .document-date {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* 右侧文档详情 */
+        .document-details {
+            flex: 1;
+            min-width: 400px;
+            background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+            border: 2px solid rgba(200, 16, 46, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.1);
+            overflow: hidden;
+        }
+
+        /* 文档详情内容 */
+        .document-details-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 文档详情头部 */
+        .document-details-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            background: linear-gradient(90deg, rgba(200, 16, 46, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            border-bottom: 1px solid rgba(200, 16, 46, 0.2);
+        }
+
+        .document-details-header h3 {
+            margin: 0;
+            color: #c8102e;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* 关闭按钮 */
+        .close-details {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: rgba(200, 16, 46, 0.1);
+            color: #c8102e;
+            font-size: 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-details:hover {
+            background: rgba(200, 16, 46, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* 文档详情主体 */
+        .document-details-body {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        /* 文档详情内容 */
+        .document-content {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .document-content h4 {
+            color: #c8102e;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(200, 16, 46, 0.2);
+        }
+
+        .document-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .document-content .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .document-content .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .document-content .meta-item .icon {
+            color: #c8102e;
+        }
+
+        /* 文档飞出动画 */
+        @keyframes documentFly {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-50px) translateX(200px) rotate(15deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(0);
+                opacity: 1;
+            }
+        }
+
+        .document-slot.flying {
+            animation: documentFly 1s ease;
+        }
+
+        /* 响应式布局 */
+        @media (max-width: 768px) {
+            .document-archive {
+                flex-direction: column;
+            }
+
+            .document-slots {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .document-slot {
+                width: calc(50% - 8px);
+            }
+
+            .document-details {
+                min-width: 100%;
+                margin-top: 20px;
+            }
+        }
+
         .section-title {
             text-align: center;
             margin-bottom: 25px;
@@ -1032,7 +1354,7 @@
         .newspaper-header {
             background: #fff;
             color: #c8102e;
-            padding: 20px 25px 15px;
+            padding: 5px 25px 5px;
             text-align: center;
             position: relative;
             border-bottom: 3px solid #c8102e;
@@ -1042,13 +1364,20 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             padding: 0 10px;
         }
 
         .newspaper-header .logo-area img {
             height: 40px;
             width: auto;
+        }
+
+        .newspaper-header .logo-area img:first-child {
+            order: 1;
+        }
+
+        .newspaper-header .logo-area img:last-child {
             order: 2;
         }
 
@@ -1071,7 +1400,7 @@
         .newspaper-header .divider {
             height: 2px;
             background: linear-gradient(90deg, transparent, #c8102e, transparent);
-            margin: 10px 0;
+            margin: 5px 0;
         }
 
         .newspaper-header .info-bar {
@@ -1096,10 +1425,61 @@
             color: #666;
         }
 
+        /* 调整info-bar布局，添加右侧操作区域 */
+        .info-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .info-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .share-btn {
+            background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .share-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+        }
+
+        /* 确保转发按钮在移动设备上也不会遮挡内容 */
+        @media (max-width: 767px) {
+            .info-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .info-bar-actions {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 5px;
+            }
+            
+            .share-btn {
+                padding: 5px 12px;
+                font-size: 12px;
+            }
+        }
+
         .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
             width: 32px;
             height: 32px;
             border: none;
@@ -1112,6 +1492,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: absolute;
+            top: 10px;
+            right: 10px;
             z-index: 10;
         }
 
@@ -1121,10 +1504,10 @@
         }
 
         .newspaper-body {
-            padding: 15px 20px;
+            padding: 40px 20px 15px;
             background: #fafafa;
-            height: calc(100% - 110px);
-            overflow: hidden;
+            height: calc(100% - 100px);
+            overflow: auto;
         }
 
         .section-block {
@@ -2366,10 +2749,10 @@
                     <a href="javascript:void(0)" class="top-nav-link" onclick="switchPage('organization')">组织</a>
                 </li>
                 <li class="top-nav-item" data-page="meeting">
-                    <a href="javascript:void(0)" class="top-nav-link" onclick="switchPage('meeting')">会议</a>
+                    <a href="javascript:void(0)" class="top-nav-link" onclick="if(confirm('待开发')) { switchPage('daily'); } else { return false; }">会议</a>
                 </li>
                 <li class="top-nav-item" data-page="project">
-                    <a href="javascript:void(0)" class="top-nav-link" onclick="switchPage('project')">项目</a>
+                    <a href="javascript:void(0)" class="top-nav-link" onclick="if(confirm('待开发')) { switchPage('daily'); } else { return false; }">项目</a>
                 </li>
             </ul>
         </div>
@@ -2460,11 +2843,12 @@
                 <div class="organization-layout">
                     <!-- 架构目录按钮 -->
                     <div class="architecture-menu">
-                        <button class="architecture-btn" onclick="toggleArchitectureMenu()">
-                            <span>架构目录</span>
-                            <span class="dropdown-icon">▼</span>
-                        </button>
-                        <div class="architecture-dropdown" id="architectureDropdown">
+                        <div style="position:relative;">
+                            <button class="architecture-btn" onclick="toggleArchitectureMenu()">
+                                <span>架构目录</span>
+                                <span class="dropdown-icon">▼</span>
+                            </button>
+                            <div class="architecture-dropdown" id="architectureDropdown">
                         <ul>
                             <li class="has-submenu">
                                 <a href="javascript:void(0)" onclick="toggleSubmenu(this)">战略决策层 ▶</a>
@@ -2549,6 +2933,7 @@
                             </li>
                         </ul>
                     </div>
+                        </div>
                     </div>
                     <!-- 内容容器块 -->
                     <div class="content-container" id="contentContainer">
@@ -3136,8 +3521,147 @@
 
         <!-- 会议页面内容 -->
         <div id="meetingPage" class="page-content" style="display:none;">
-            <div class="container">
-                <!-- 会议页面内容将在后续添加 -->
+            <div class="container meeting-container">
+                <!-- 会议档案库标题 -->
+                <div class="section-title">
+                    <div class="title-decoration">
+                        <div class="decoration-line left"></div>
+                        <div class="decoration-icon">📅</div>
+                        <div class="decoration-line right"></div>
+                    </div>
+                    <svg width="400" height="60" viewBox="0 0 400 60" style="margin:0 auto;">
+                        <text x="200" y="45" text-anchor="middle" class="svg-title-meeting" style="font-family:'SimHei','Microsoft YaHei','STHeiti',sans-serif;font-size:36px;font-weight:bold;letter-spacing:12px;fill:#000;">会议档案库</text>
+                    </svg>
+                    <p class="subtitle">记录每一次重要会议</p>
+                </div>
+                
+                <!-- 文档位容器 -->
+                <div class="document-archive">
+                    <!-- 左侧文档位 -->
+                    <div class="document-slots">
+                        <div class="document-slot" data-document="1" onclick="openMeetingDocument(1)">
+                            <div class="document-folder">
+                                <div class="folder-tab"></div>
+                                <div class="folder-side"></div>
+                                <div class="folder-content">
+                                    <div class="document-preview">
+                                        <div class="document-icon">📄</div>
+                                        <div class="document-info">
+                                            <div class="document-title">董事会会议纪要</div>
+                                            <div class="document-date">2026-01-15</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-slot" data-document="2" onclick="openMeetingDocument(2)">
+                            <div class="document-folder">
+                                <div class="folder-tab"></div>
+                                <div class="folder-side"></div>
+                                <div class="folder-content">
+                                    <div class="document-preview">
+                                        <div class="document-icon">📊</div>
+                                        <div class="document-info">
+                                            <div class="document-title">季度业务回顾</div>
+                                            <div class="document-date">2026-01-20</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-slot" data-document="3" onclick="openMeetingDocument(3)">
+                            <div class="document-folder">
+                                <div class="folder-tab"></div>
+                                <div class="folder-side"></div>
+                                <div class="folder-content">
+                                    <div class="document-preview">
+                                        <div class="document-icon">🎯</div>
+                                        <div class="document-info">
+                                            <div class="document-title">年度战略规划</div>
+                                            <div class="document-date">2026-01-10</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-slot" data-document="4" onclick="openMeetingDocument(4)">
+                            <div class="document-folder">
+                                <div class="folder-tab"></div>
+                                <div class="folder-side"></div>
+                                <div class="folder-content">
+                                    <div class="document-preview">
+                                        <div class="document-icon">🚀</div>
+                                        <div class="document-info">
+                                            <div class="document-title">产品 roadmap 讨论</div>
+                                            <div class="document-date">2026-01-25</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-slot" data-document="5" onclick="openMeetingDocument(5)">
+                            <div class="document-folder">
+                                <div class="folder-tab"></div>
+                                <div class="folder-side"></div>
+                                <div class="folder-content">
+                                    <div class="document-preview">
+                                        <div class="document-icon">💰</div>
+                                        <div class="document-info">
+                                            <div class="document-title">财务预算评审</div>
+                                            <div class="document-date">2026-01-05</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-slot" data-document="6" onclick="openMeetingDocument(6)">
+                            <div class="document-folder">
+                                <div class="folder-tab"></div>
+                                <div class="folder-side"></div>
+                                <div class="folder-content">
+                                    <div class="document-preview">
+                                        <div class="document-icon">👥</div>
+                                        <div class="document-info">
+                                            <div class="document-title">人才发展规划</div>
+                                            <div class="document-date">2026-01-18</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-slot" data-document="7" onclick="openMeetingDocument(7)">
+                            <div class="document-folder">
+                                <div class="folder-tab"></div>
+                                <div class="folder-side"></div>
+                                <div class="folder-content">
+                                    <div class="document-preview">
+                                        <div class="document-icon">💻</div>
+                                        <div class="document-info">
+                                            <div class="document-title">技术架构评审</div>
+                                            <div class="document-date">2026-01-22</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 右侧文档详情 -->
+                    <div class="document-details">
+                        <div class="document-details-content">
+                            <div class="document-details-header">
+                                <h3>文档详情</h3>
+                                <button class="close-details" onclick="closeMeetingDocument()">×</button>
+                            </div>
+                            <div class="document-details-body" id="documentDetailsBody">
+                                <div class="empty-state">
+                                    <div class="empty-icon">📄</div>
+                                    <p>请从左侧选择一个会议文档查看详情</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -3153,17 +3677,18 @@
         <div class="modal-content">
             <button class="close-btn" id="closeBtn">×</button>
             <div class="newspaper-header">
-                <div class="logo-area" style="justify-content:space-between;">
-                    <svg width="220" height="40" viewBox="0 0 220 40" style="flex:none;">
-                        <text x="0" y="32" text-anchor="start" class="svg-title-main" style="font-family:'SimHei','Microsoft YaHei','STHeiti',sans-serif;font-size:24px;">智启侨乡日报</text>
-                    </svg>
-                    <img src="images/985fb8e021cb545bbb56779357129d7.png?v=1.0" alt="Logo" style="order:2;height:35px;">
+                <div class="logo-area">
+                    <img src="images/9161e9ab-5cac-4f69-b57f-2ca6970b1429.png" alt="智启侨乡日报" style="height:38px; width:auto;">
+                    <img src="images/985fb8e021cb545bbb56779357129d7.png?v=1.0" alt="Logo" style="height:38px;">
                 </div>
                 <div class="divider"></div>
                 <div class="info-bar">
                     <span class="issue" id="modalIssue">第 0 期</span>
                     <span class="slogan">智创侨乡 · 砥砺前行</span>
-                    <span class="date" id="modalDate">2026年1月1日</span>
+                    <div class="info-bar-actions">
+                        <span class="date" id="modalDate">2026年1月1日</span>
+                        <button class="share-btn" onclick="shareNewspaper()">📤 转发</button>
+                    </div>
                 </div>
             </div>
             <div class="newspaper-body" id="modalBody">
@@ -3350,7 +3875,10 @@
             }
         }
 
+        let currentNewspaper = null;
+
         function openModal(np) {
+            currentNewspaper = np;
             const modal = document.getElementById('modal');
             document.getElementById('modalIssue').textContent = `第 ${np.issue} 期`;
             document.getElementById('modalDate').textContent = np.date;
@@ -4098,6 +4626,27 @@
             document.body.style.overflow = '';
         }
 
+        function shareNewspaper() {
+            if (!currentNewspaper) {
+                alert('请先打开一份日报');
+                return;
+            }
+
+            // 生成分享链接
+            const shareUrl = `${window.location.origin}${window.location.pathname}?page=share&issue=${currentNewspaper.issue}&date=${encodeURIComponent(currentNewspaper.date)}`;
+
+            // 复制链接到剪贴板
+            navigator.clipboard.writeText(shareUrl)
+                .then(() => {
+                    alert('链接已复制到剪贴板，请发送到手机查看！');
+                })
+                .catch(err => {
+                    console.error('复制失败:', err);
+                    // 降级方案：显示链接让用户手动复制
+                    prompt('请复制以下链接到手机查看:', shareUrl);
+                });
+        }
+
         // 弹幕统计对象 - 第1页
         const danmuCountsPage0 = {
             '我赞同': 0,
@@ -4259,6 +4808,9 @@
                 if (page === 'organization') {
                     searchBox.style.display = 'none';
                     organizationTitle.style.display = 'block';
+                } else if (page === 'meeting') {
+                    searchBox.style.display = 'none';
+                    organizationTitle.style.display = 'none';
                 } else {
                     searchBox.style.display = 'block';
                     organizationTitle.style.display = 'none';
@@ -5220,6 +5772,412 @@
         });
 
         initBookshelf();
+
+        // 会议文档数据
+        const meetingDocuments = {
+            1: {
+                title: '董事会会议纪要',
+                date: '2026-01-15',
+                time: '14:00-16:30',
+                location: '公司会议室A',
+                attendees: '董事会成员、CEO、CFO',
+                content: '本次董事会会议主要讨论了公司2026年度战略规划、财务预算、高管任免等重要事项。会议一致通过了公司新的战略发展方向，批准了2026年度财务预算，并对部分高管职位进行了调整。会议强调，公司将继续加强核心业务的发展，同时积极探索新的业务增长点，确保公司可持续发展。',
+                attachments: '会议议程、财务报告、战略规划文档'
+            },
+            2: {
+                title: '季度业务回顾',
+                date: '2026-01-20',
+                time: '10:00-12:00',
+                location: '公司会议室B',
+                attendees: '各部门负责人、CEO',
+                content: '本次季度业务回顾会议总结了上季度各部门的工作成果和存在的问题，分析了市场形势和竞争对手动态，并对本季度的工作重点进行了部署。会议要求各部门要加强协作，提高执行力，确保完成本季度的各项工作目标。',
+                attachments: '季度业务报告、市场分析报告'
+            },
+            3: {
+                title: '年度战略规划',
+                date: '2026-01-10',
+                time: '09:00-12:30',
+                location: '公司大会议室',
+                attendees: '高管团队、战略规划部',
+                content: '本次年度战略规划会议制定了公司2026年度的战略目标和实施路径，包括市场拓展、产品创新、技术研发、人才培养等方面的具体规划。会议强调，公司要以客户为中心，以创新为驱动，不断提升核心竞争力，实现公司的长期发展目标。',
+                attachments: '战略规划文档、市场调研数据'
+            },
+            4: {
+                title: '产品 roadmap 讨论',
+                date: '2026-01-25',
+                time: '13:30-15:30',
+                location: '产品部会议室',
+                attendees: '产品团队、研发团队、市场团队',
+                content: '本次产品roadmap讨论会议梳理了现有产品的发展状况，讨论了新产品的研发计划和时间节点，并对产品功能优先级进行了排序。会议要求产品团队要密切关注市场需求和用户反馈，不断优化产品设计，提高产品的市场竞争力。',
+                attachments: '产品roadmap文档、用户反馈报告'
+            },
+            5: {
+                title: '财务预算评审',
+                date: '2026-01-05',
+                time: '14:00-16:00',
+                location: '财务部会议室',
+                attendees: '高管团队、财务部、各部门负责人',
+                content: '本次财务预算评审会议对各部门提交的2026年度预算进行了审核和调整，确保预算的合理性和可行性。会议要求各部门要严格控制成本，提高资金使用效率，确保公司财务状况的健康稳定。',
+                attachments: '2026年度预算草案、财务分析报告'
+            },
+            6: {
+                title: '人才发展规划',
+                date: '2026-01-18',
+                time: '15:00-17:00',
+                location: '人力资源部会议室',
+                attendees: '高管团队、人力资源部、各部门负责人',
+                content: '本次人才发展规划会议分析了公司当前的人才状况，制定了2026年度的人才招聘、培养和激励计划。会议强调，公司要加强人才队伍建设，优化人才结构，为公司的发展提供强有力的人才支撑。',
+                attachments: '人才发展规划文档、人力资源分析报告'
+            },
+            7: {
+                title: '技术架构评审',
+                date: '2026-01-22',
+                time: '10:30-12:30',
+                location: '技术部会议室',
+                attendees: '技术团队、产品团队、CTO',
+                content: '本次技术架构评审会议对公司现有系统的技术架构进行了评估，讨论了技术升级和架构优化的方案，并对新技术的应用进行了探讨。会议要求技术团队要不断提升技术能力，确保系统的稳定性和可扩展性，为业务发展提供有力的技术支持。',
+                attachments: '技术架构评估报告、技术升级方案'
+            }
+        };
+
+        // 打开会议文档
+        function openMeetingDocument(documentId) {
+            // 添加飞出动画
+            const documentSlot = document.querySelector(`.document-slot[data-document="${documentId}"]`);
+            if (documentSlot) {
+                documentSlot.classList.add('flying');
+                
+                // 动画结束后移除类
+                setTimeout(() => {
+                    documentSlot.classList.remove('flying');
+                }, 1000);
+            }
+            
+            // 获取文档数据
+            const documentData = meetingDocuments[documentId];
+            if (!documentData) return;
+            
+            // 更新文档详情
+            const documentDetailsBody = document.getElementById('documentDetailsBody');
+            if (documentDetailsBody) {
+                documentDetailsBody.innerHTML = `
+                    <div class="document-content">
+                        <h4>${documentData.title}</h4>
+                        <p>${documentData.content}</p>
+                        <div class="meta-info">
+                            <div class="meta-item">
+                                <span class="icon">📅</span>
+                                <span>日期：${documentData.date}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="icon">⏰</span>
+                                <span>时间：${documentData.time}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="icon">📍</span>
+                                <span>地点：${documentData.location}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="icon">👥</span>
+                                <span>参会人员：${documentData.attendees}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="icon">📎</span>
+                                <span>附件：${documentData.attachments}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // 关闭会议文档
+        function closeMeetingDocument() {
+            const documentDetailsBody = document.getElementById('documentDetailsBody');
+            if (documentDetailsBody) {
+                documentDetailsBody.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📄</div>
+                        <p>请从左侧选择一个会议文档查看详情</p>
+                    </div>
+                `;
+            }
+        }
+
+        // 处理URL参数，显示移动端海报
+        function handleSharePage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('page') === 'share') {
+                const issue = urlParams.get('issue');
+                const date = urlParams.get('date');
+                
+                if (issue) {
+                    // 查找对应的日报
+                    const newspaper = newspapers.find(np => np.issue === issue);
+                    if (newspaper) {
+                        // 创建移动端海报页面
+                        createMobilePoster(newspaper);
+                    }
+                }
+            }
+        }
+
+        // 创建移动端海报页面
+        function createMobilePoster(newspaper) {
+            // 清空页面内容
+            document.body.innerHTML = '';
+            
+            // 添加移动端海报样式
+            const style = document.createElement('style');
+            style.textContent = `
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                
+                body {
+                    font-family: 'SimHei', 'Microsoft YaHei', sans-serif;
+                    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+                    min-height: 100vh;
+                    padding: 20px;
+                }
+                
+                .mobile-poster {
+                    max-width: 400px;
+                    margin: 0 auto;
+                    background: white;
+                    border-radius: 16px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                    overflow: hidden;
+                    animation: fadeIn 1s ease-out;
+                }
+                
+                .poster-header {
+                    background: linear-gradient(90deg, #c8102e 0%, #ff6b35 100%);
+                    color: white;
+                    padding: 30px 20px;
+                    text-align: center;
+                    animation: slideDown 0.8s ease-out;
+                }
+                
+                .poster-title {
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+                
+                .poster-issue {
+                    font-size: 16px;
+                    opacity: 0.9;
+                }
+                
+                .poster-date {
+                    font-size: 14px;
+                    opacity: 0.8;
+                    margin-top: 5px;
+                }
+                
+                .poster-content {
+                    padding: 20px;
+                    animation: slideUp 0.8s ease-out 0.3s both;
+                }
+                
+                .section {
+                    margin-bottom: 30px;
+                }
+                
+                .section-title {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #c8102e;
+                    margin-bottom: 15px;
+                    padding-bottom: 8px;
+                    border-bottom: 2px solid #f0f0f0;
+                }
+                
+                .news-item {
+                    margin-bottom: 20px;
+                }
+                
+                .news-item h4 {
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                    color: #333;
+                }
+                
+                .news-item p {
+                    font-size: 14px;
+                    line-height: 1.6;
+                    color: #666;
+                }
+                
+                .news-item .author {
+                    font-size: 12px;
+                    color: #999;
+                    margin-top: 10px;
+                    text-align: right;
+                }
+                
+                .media-placeholder {
+                    margin: 15px 0;
+                    padding: 40px 20px;
+                    background: #f5f5f5;
+                    border-radius: 8px;
+                    text-align: center;
+                }
+                
+                .media-placeholder .icon {
+                    font-size: 48px;
+                    margin-bottom: 10px;
+                }
+                
+                .media-placeholder img {
+                    max-width: 100%;
+                    border-radius: 8px;
+                }
+                
+                .tags {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    margin-top: 15px;
+                }
+                
+                .tag {
+                    background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
+                    color: white;
+                    padding: 4px 12px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                }
+                
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: scale(0.9);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+                
+                @keyframes slideDown {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-50px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                @keyframes slideUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(50px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                @media (max-width: 375px) {
+                    body {
+                        padding: 10px;
+                    }
+                    
+                    .mobile-poster {
+                        margin: 0;
+                    }
+                    
+                    .poster-header {
+                        padding: 20px 15px;
+                    }
+                    
+                    .poster-content {
+                        padding: 15px;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // 创建海报HTML
+            let html = `
+                <div class="mobile-poster">
+                    <div class="poster-header">
+                        <img src="images/9161e9ab-5cac-4f69-b57f-2ca6970b1429.png" alt="智启侨乡日报" style="height:24px; width:auto; margin:0;">
+                        <div class="poster-issue">第 ${newspaper.issue} 期</div>
+                        <div class="poster-date">${newspaper.date}</div>
+                    </div>
+                    <div class="poster-content">
+                        <div class="section">
+                            <div class="section-title">📖 学习专栏</div>
+            `;
+            
+            // 添加学习专栏内容
+            newspaper.partyCulture.forEach((item, idx) => {
+                html += `
+                    <div class="news-item">
+                        <h4>${item.title}</h4>
+                        <p>${item.content}</p>
+                        ${item.author ? `<div class="author">—— ${item.author}</div>` : ''}
+                        ${item.media.src ? `<div class="media-placeholder"><img src="${item.media.src}" alt="${item.media.label}"></div>` : ''}
+                    </div>
+                `;
+            });
+            
+            html += `
+                        </div>
+                        <div class="section">
+                            <div class="section-title">🏢 组织动态</div>
+            `;
+            
+            // 添加组织动态内容
+            newspaper.organizationNews.forEach((item, idx) => {
+                html += `
+                    <div class="news-item">
+                        <h4>${item.title}</h4>
+                        <p>${item.content}</p>
+                        ${item.author ? `<div class="author">—— ${item.author}</div>` : ''}
+                        ${item.media.src ? `<div class="media-placeholder"><img src="${item.media.src}" alt="${item.media.label}"></div>` : ''}
+                    </div>
+                `;
+            });
+            
+            html += `
+                        </div>
+                        <div class="section">
+                            <div class="section-title">🏆 实践题</div>
+                            <div class="news-item">
+                                <h4>${newspaper.quiz.title}</h4>
+                                <p>${newspaper.quiz.question}</p>
+                                ${newspaper.quiz.options.map((option, idx) => `
+                                    <p>${String.fromCharCode(65 + idx)}. ${option}</p>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="section-title">🏷️ 标签</div>
+                            <div class="tags">
+                                ${newspaper.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.innerHTML = html;
+        }
+
+        // 页面加载时处理URL参数
+        window.addEventListener('load', () => {
+            handleSharePage();
+        });
     </script>
 </body>
 </html>

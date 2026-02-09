@@ -2734,31 +2734,54 @@
             }
 
             .bookshelf {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                gap: 15px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
                 padding: 10px;
             }
 
             .stats-bar {
-                flex-wrap: wrap;
-                gap: 20px;
-                padding: 15px 10px;
+                flex-wrap: nowrap;
+                justify-content: space-around;
+                gap: 10px;
+                padding: 12px 10px;
+                background: linear-gradient(135deg, rgba(200,16,46,0.05) 0%, rgba(255,107,53,0.05) 100%);
+                margin: 0 10px 10px;
+                border-radius: 12px;
+            }
+
+            .stat-item {
+                text-align: center;
+                padding: 8px 12px;
+                background: #fff;
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(200,16,46,0.1);
             }
 
             .stat-item .number {
-                font-size: 24px;
+                font-size: 20px;
+                background: linear-gradient(135deg, #c8102e 0%, #ff6b35 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
             }
 
             .stat-item .label {
-                font-size: 12px;
+                font-size: 11px;
+                color: #666;
+                margin-top: 2px;
+            }
+
+            .newspaper-card {
+                border-radius: 12px;
+                overflow: hidden;
             }
 
             .newspaper-cover {
-                height: 180px;
+                height: 160px;
             }
 
             .newspaper-cover-title {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .newspaper-cover-subtitle {
@@ -2766,15 +2789,17 @@
             }
 
             .newspaper-info {
-                padding: 10px;
+                padding: 10px 8px;
             }
 
             .newspaper-issue {
                 font-size: 12px;
+                font-weight: 600;
             }
 
             .newspaper-date {
-                font-size: 11px;
+                font-size: 10px;
+                color: #999;
             }
 
             .top-nav-link {

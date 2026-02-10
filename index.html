@@ -4963,7 +4963,7 @@
             videoHtml += '<div class="section-content">';
             videoHtml += `
                 <div class="video-container" onclick="openVideoExpandModal('${np.aiVideo.videoSrc}', '${np.aiVideo.desc}')" style="position:relative;">
-                    <video muted width="100%" height="auto" style="border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);pointer-events:none;">
+                    <video muted autoplay loop playsinline width="100%" height="auto" style="border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);pointer-events:none;">
                         <source src="${np.aiVideo.videoSrc}" type="video/mp4">
                         您的浏览器不支持视频播放
                     </video>
